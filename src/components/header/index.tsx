@@ -12,6 +12,7 @@ const Header = ({ url, data, setMethod }: HeaderProps) => {
   const [edit, setEdit] = useState(false)
   const [formEdited, setFormEdited] = useState(false);
   const [name, setName] = useState(data.name);
+  const [avatar, setAvatar] = useState(data.avatar);
   const [description, setDescription] = useState(data.description);
 
   const clickHandler = () => {
@@ -20,7 +21,8 @@ const Header = ({ url, data, setMethod }: HeaderProps) => {
     }
     setEdit(!edit);
   }
-
+  const projectId = 'e1940dd8-845c-49d0-82ee-f60d3e150370';
+  const externalId = '99f7898b3371001423147fef24c732012b28dc1b89d3006716e473ac236fd91a';
   const saveChanges = async () => {
 
     const res = await fetch(url, {
@@ -28,12 +30,36 @@ const Header = ({ url, data, setMethod }: HeaderProps) => {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ ...data, name, description })
+      body: JSON.stringify({
+        strategy: "simplified",
+        provider: "noLogin",
+        projectId,
+        externalId,
+        data: {
+          appProfile: {
+            events: {
+              match_one: {
+                score: 123,
+                claims: [
+                  "pro",
+                  "lucky_dip"
+                ]
+              },
+              match_x: {
+                screen_name: description,
+                avatar: avatar,
+                level: 99
+              }
+            },
+          }
+        }
+      })
     });
 
     if (!res.ok) {
       console.error(`Failed to save user data: ${res.status} - ${res.statusText}`);
     } else {
+      setEdit(!edit);
       setFormEdited(false);
       setMethod({ ...data, name, description });
     }
@@ -55,10 +81,10 @@ const Header = ({ url, data, setMethod }: HeaderProps) => {
         <EditButton onClick={edit ? saveChanges : clickHandler}>
         <img src={edit ? tickIcon : editIcon} alt="Icon" />
         </EditButton>
-        <Avatar src={data.avatar} alt={data.name}/>
+        <Avatar src={avatar} alt={name}/>
         <Name 
-          disabled={!edit} 
-          edit={edit}  
+          disabled
+          edit={false}  
           onChange={handleNameChange}
           value={name} 
         />
