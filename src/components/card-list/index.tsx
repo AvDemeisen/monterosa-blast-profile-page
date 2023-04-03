@@ -6,7 +6,7 @@ interface CardListProps {
 }
 
 const CardList = ({list}: CardListProps) => <Wrapper>
-    {list.map(({label, data, total, progress}) => <Item>
+    {list.map(({label, data, total, progress}) => <Item key={label}>
 
 <Card>
   <CardInner>

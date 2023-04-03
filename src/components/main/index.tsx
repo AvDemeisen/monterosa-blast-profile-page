@@ -15,25 +15,25 @@ function MyTabs() {
 
   const list = [
     {
-      label: 'Label',
+      label: 'One',
       data: '###',
       total: '###',
       progress: 80
     },
     {
-      label: 'Label',
+      label: 'Two',
       data: '###',
       total: '###',
       progress: 20
     },
     {
-      label: 'Label',
+      label: 'Three',
       data: '###',
       total: '###',
       progress: 40
     },
     {
-      label: 'Label',
+      label: 'Four',
       data: '###',
       total: '###',
       progress: 60

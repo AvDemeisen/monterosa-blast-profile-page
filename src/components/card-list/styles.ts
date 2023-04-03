@@ -19,7 +19,7 @@ gap: 8px;
 width: 100%;
 height: 96px;
 color: white;
-background: url(Checker.png), #000000;
+background: #000000;
 border-radius: 8px;
 `;
 

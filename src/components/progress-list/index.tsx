@@ -7,7 +7,7 @@ interface ListProps {
 
 const ProgressList = ({list}: ListProps) => <Wrapper>
   {list.map(({label, data, total, progress}) => 
-    <Item>
+    <Item key={label}>
             <ProgressContainer value={progress}>
              <Label text={label}/>
  <>      

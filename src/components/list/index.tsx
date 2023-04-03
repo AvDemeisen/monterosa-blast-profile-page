@@ -6,7 +6,7 @@ interface ListProps {
 }
 
 const List = ({list}: ListProps) => <Wrapper>
-    {list.map(({label, data}) => <Item>
+    {list.map(({label, data}) => <Item key={label}>
 <Label text={label}/>
 <Data text={data}/>
     </Item>)}
