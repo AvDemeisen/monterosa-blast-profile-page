@@ -64,7 +64,7 @@ font-size: 14px;
 line-height: 16px;
 text-align: center;
 
-color: #000000;
+color: var(--tab-color);
 
 :focus-visible {
     outline: none;

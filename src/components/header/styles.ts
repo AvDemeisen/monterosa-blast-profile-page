@@ -30,6 +30,9 @@ export const EditButton = styled.button`
   transition: background-color 300ms ease-in-out;
 
   img {
+    position: absolute;
+    left: 10px;
+    top: 10px;
     height: 14px;
     width: 14px;
   }
@@ -65,7 +68,7 @@ cursor: default;
 ${({ edit }) => edit && css`
   outline: none;
   background-color: #f6f6f6;
-  color: #000;
+  color: var(--header-background);
   cursor: text;
 `}
 `
@@ -79,12 +82,12 @@ export const Description = styled.input<InputProps>`
   text-align: center;
   border: none;
   background-color: transparent;
-  cursor: text;
+  cursor: default;
 
   ${({ edit }) => edit && css`
   outline: none;
   background-color: #f6f6f6;
-  color: #000;
+  color: var(--header-background);
   cursor: text;
 `}
 `

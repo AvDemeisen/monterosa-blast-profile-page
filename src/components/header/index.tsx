@@ -7,8 +7,10 @@ interface HeaderProps {
   url: string;
 data: any
   setMethod: any;
+  projectId: any;
+  externalId: any;
 }
-const Header = ({ url, data, setMethod }: HeaderProps) => {
+const Header = ({ url, projectId, externalId, data, setMethod }: HeaderProps) => {
   const [edit, setEdit] = useState(false)
   const [formEdited, setFormEdited] = useState(false);
   const [name, setName] = useState(data.name);
@@ -21,8 +23,7 @@ const Header = ({ url, data, setMethod }: HeaderProps) => {
     }
     setEdit(!edit);
   }
-  const projectId = 'e1940dd8-845c-49d0-82ee-f60d3e150370';
-  const externalId = '99f7898b3371001423147fef24c732012b28dc1b89d3006716e473ac236fd91a';
+
   const saveChanges = async () => {
 
     const res = await fetch(url, {
