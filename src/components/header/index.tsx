@@ -5,7 +5,7 @@ import { Wrapper, EditButton, UserDetails, Avatar, Name, Description, VerticalLi
 
 interface HeaderProps {
   url: string;
-data: any
+  data: any
   setMethod: any;
   projectId: any;
   externalId: any;
@@ -98,8 +98,8 @@ const Header = ({ url, projectId, externalId, data, setMethod }: HeaderProps) =>
       </UserDetails>
       <VerticalList>
         <ListItem>
-          <ItemData>###</ItemData>
-          <ItemLabel>Label</ItemLabel>
+          <ItemData>{data.level}</ItemData>
+          <ItemLabel>level</ItemLabel>
         </ListItem>
         <ListItem>
           <ItemData>###</ItemData>

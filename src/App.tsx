@@ -12,7 +12,8 @@ function App() {
   const [profile, setProfile] = useState({
     avatar: '',
     name: '',
-    description: ''
+    description: '',
+    level: 0
   });
 
   const url = `https://m-id-public-api-dev-dev.monterosa.cloud/v1/user?projectId=${projectId}&externalId=${externalId}&strategy=simplified`
@@ -40,7 +41,8 @@ function App() {
     setProfile({
       avatar: data.data.appProfile.events.match_x.avatar,
       name: data.data.username,
-      description: data.data.appProfile.events.match_x.screen_name
+      description: data.data.appProfile.events.match_x.screen_name,
+      level: data.data.appProfile.events.match_x.level
     });
   }
 
