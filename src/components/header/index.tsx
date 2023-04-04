@@ -41,10 +41,6 @@ const Header = ({ url, projectId, externalId, data, setMethod }: HeaderProps) =>
             events: {
               match_one: {
                 score: 123,
-                claims: [
-                  "pro",
-                  "lucky_dip"
-                ]
               },
               match_x: {
                 screen_name: description,

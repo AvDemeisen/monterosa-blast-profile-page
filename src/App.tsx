@@ -13,7 +13,8 @@ function App() {
     avatar: '',
     name: '',
     description: '',
-    level: 0
+    level: 0,
+    matches: []
   });
 
   const url = `https://m-id-public-api-dev-dev.monterosa.cloud/v1/user?projectId=${projectId}&externalId=${externalId}&strategy=simplified`
@@ -27,24 +28,17 @@ function App() {
     }
   );
 
-  if (error) {
-    console.log(error)
-    return <div>Failed to load profile data</div>;
-  }
+  if (error) return <div>Failed to load profile data</div>;
   if (!data) return <div>Loading...</div>;
-
-  if (!data.data.username) {
-    return <div>User not found</div>;
-  }
-
-  if (profile.name !== data.data.username) {
-    setProfile({
-      avatar: data.data.appProfile.events.match_x.avatar,
-      name: data.data.username,
-      description: data.data.appProfile.events.match_x.screen_name,
-      level: data.data.appProfile.events.match_x.level
-    });
-  }
+  if (!data.data.username) return <div>User not found</div>;
+  
+  if (profile.name !== data.data.username) setProfile({
+    avatar: data.data.appProfile.events.match_x.avatar,
+    name: data.data.username,
+    description: data.data.appProfile.events.match_x.screen_name,
+    level: data.data.appProfile.events.match_x.level,
+    matches: []
+  });
 
   return (
     <Wrapper>
