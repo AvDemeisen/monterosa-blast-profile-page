@@ -12,8 +12,10 @@ import {
   VerticalList, 
   ListItem, 
   ItemLabel, 
-  ItemData 
+  ItemData,
+  Card
 } from './styles'
+import Progress from '../Progress';
 
 interface HeaderProps {
   url: string;
@@ -85,7 +87,7 @@ const Header = ({ url, projectId, data, ranking }: HeaderProps) => {
   return (
     <Wrapper>
       <Inner>
-                <EditButton>
+        <EditButton>
         <img src={edit ? tickIcon : editIcon} alt="Icon" />
         </EditButton>
       <Avatar src={avatar} alt={name}/>
@@ -107,6 +109,10 @@ const Header = ({ url, projectId, data, ranking }: HeaderProps) => {
           <ItemLabel>Streak</ItemLabel>
         </ListItem>
       </VerticalList>
+      <Card>
+      <span>Level {ranking.rank + 1} </span>
+      <Progress progress={40} />
+      </Card>
       </Inner>
 
     </Wrapper>

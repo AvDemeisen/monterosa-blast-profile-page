@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
     max-width: 460px;
     weight: 100%;
     min-height: 100vh;
+    height: 100%;
     margin: 0px auto;
     text-align: center;
     display: grid;
@@ -16,7 +17,7 @@ export const Loader = styled.span`
     left: 0;
     right: 0;
     top: 50%;
-    color: var(--header-text);
+    color: var(--loader-text);
     font-size: 24px;
 `
 

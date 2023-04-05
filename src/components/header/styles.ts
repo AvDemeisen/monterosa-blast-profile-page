@@ -42,8 +42,9 @@ export const EditButton = styled.button`
 
   img {
     position: absolute;
-    left: 10px;
-    top: 10px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
     height: 14px;
     width: 14px;
   }
@@ -121,4 +122,17 @@ letter-spacing: 0em;
 text-align: center;
 color: var(--header-text);
 margin: 0;
+`
+
+export const Card = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  height: 72px;
+  width: 100%
+  border-radius: 8px;
+  padding: 32px 8px 8px 8px;
+  background: #1F5DFF;
+  border-radius: 8px;
 `

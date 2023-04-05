@@ -1,6 +1,7 @@
-import { Wrapper, Item, Card, CardInner, Progress } from './styles';
+import { Wrapper, Item, Card, CardInner } from './styles';
 import Label from '../label';
 import Data from '../data';
+import Progress from '../Progress';
 interface CardListProps {
   list: { label: string, data: string, total: string, progress: any }[];
 }
