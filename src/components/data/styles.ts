@@ -9,4 +9,7 @@ font-weight: 800;
 font-size: 14px;
 line-height: 16px;
 color: ${({color}) => color};
+
+  overflow: hidden;
+  text-overflow: ellipsis;
 `

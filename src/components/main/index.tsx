@@ -1,10 +1,10 @@
 import { SetStateAction, useState } from 'react';
 import List from '../list';
-import ProgressList from '../progress-list';
+import Badges from '../badges';
 import CardList from '../card-list';
 
 import 'react-tabs/style/react-tabs.css';
-import { Wrapper,  Tab, Tabs, TabList, TabPanel, Indicator} from './styles';
+import { Wrapper,  Panel, Tab, Tabs, TabList, TabPanel, Indicator} from './styles';
 function MyTabs({data}: any) {
   const { achievements, badges, points} = data;
   const [activeTab, setActiveTab] = useState(0);
@@ -18,20 +18,27 @@ function MyTabs({data}: any) {
     <Wrapper>
     <Tabs selectedIndex={activeTab} onSelect={handleTabChange}>
       <TabList>
+        <Tab>Stats</Tab>
         <Tab>Achievements</Tab>
-        <Tab>Tab two</Tab>
-        <Tab>Tab three</Tab>
+        <Tab>Rewards</Tab>
         <Indicator left={left} widthOfTab={33} />
       </TabList>
+      <Panel>
       <TabPanel>
         <List data={achievements}/>
       </TabPanel>
+
       <TabPanel>
-      <ProgressList data={badges}/>
+        <Badges data={badges}/>
       </TabPanel>
+
       <TabPanel>
-      <CardList list={points}/>
+        <CardList list={points}/>
       </TabPanel>
+      </Panel>
+
+
+
     </Tabs>
     </Wrapper>
 

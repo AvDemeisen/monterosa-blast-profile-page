@@ -2,15 +2,25 @@ import styled, { css } from 'styled-components';
 
 export const Wrapper = styled.header`
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 48px;
-  padding: 32px 0px 0px;
+  padding: 32px;
   background: var(--header-background);
   width: 100%;
   margin: 0 auto;
 `
+
+export const Inner = styled.div`
+background-color: var(--header-inner-background);
+padding: 16px;
+
+display: flex;
+flex-direction: column;
+gap: 8px;
+box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.2);
+border-radius: 16px;
+
+`
+
+
 export const UserDetails = styled.div`
   display: grid;
   flex-direction: column;
@@ -26,8 +36,9 @@ export const EditButton = styled.button`
   right: 16px;
   border-radius: 48px;
   border: none;
-  background: rgba(255, 255, 255, 0.2);
+  background: #E83E7E;
   transition: background-color 300ms ease-in-out;
+  z-index: 2;
 
   img {
     position: absolute;
@@ -54,7 +65,7 @@ interface InputProps {
   edit: boolean; 
 }
 
-export const Name = styled.input<InputProps>`
+export const Name = styled.span`
 font-style: normal;
 font-weight: 800;
 font-size: 28px;
@@ -64,15 +75,8 @@ color: var(--header-text);
 border: none;
 background-color: transparent;
 cursor: default;
-
-${({ edit }) => edit && css`
-  outline: none;
-  background-color: #f6f6f6;
-  color: var(--header-background);
-  cursor: text;
-`}
 `
-export const Description = styled.input<InputProps>`
+export const Description = styled.span`
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
@@ -83,13 +87,6 @@ export const Description = styled.input<InputProps>`
   border: none;
   background-color: transparent;
   cursor: default;
-
-  ${({ edit }) => edit && css`
-  outline: none;
-  background-color: #f6f6f6;
-  color: var(--header-background);
-  cursor: text;
-`}
 `
 
 
@@ -107,18 +104,20 @@ export const ListItem = styled.li`
 padding: 16px 0;
 `
 export const ItemLabel = styled.span`
+font-size: 14px;
 font-weight: 400;
-font-size: 18px;
-line-height: 24px;
+line-height: 16px;
+letter-spacing: 0em;
 text-align: center;
 color: var(--header-text);
 opacity: 0.54;
 `;
 
 export const ItemData = styled.h4`
+font-size: 18px;
 font-weight: 800;
-font-size: 28px;
 line-height: 32px;
+letter-spacing: 0em;
 text-align: center;
 color: var(--header-text);
 margin: 0;

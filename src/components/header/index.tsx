@@ -1,15 +1,27 @@
 import { useState } from 'react';
 import editIcon from '../../assets/edit-icon.png';
 import tickIcon from '../../assets/tick-icon.png';
-import { Wrapper, EditButton, UserDetails, Avatar, Name, Description, VerticalList, ListItem, ItemLabel, ItemData } from './styles'
+import { 
+  Wrapper,
+  EditButton, 
+  Inner, 
+  UserDetails, 
+  Avatar, 
+  Name, 
+  Description, 
+  VerticalList, 
+  ListItem, 
+  ItemLabel, 
+  ItemData 
+} from './styles'
 
 interface HeaderProps {
   url: string;
   data: any
-
+  ranking: { rank: number, score: number}
   projectId: any;
 }
-const Header = ({ url, projectId, data }: HeaderProps) => {
+const Header = ({ url, projectId, data, ranking }: HeaderProps) => {
   const [edit, setEdit] = useState(false)
   const [formEdited, setFormEdited] = useState(false);
   const [name, setName] = useState(data.username);
@@ -72,38 +84,31 @@ const Header = ({ url, projectId, data }: HeaderProps) => {
 
   return (
     <Wrapper>
-      <UserDetails>
-        {/* <EditButton>
+      <Inner>
+                <EditButton>
         <img src={edit ? tickIcon : editIcon} alt="Icon" />
-        </EditButton> */}
-        <Avatar src={avatar} alt={name}/>
-        <Name 
-          disabled
-          edit={false}  
-          // onChange={handleNameChange}
-          value={name} 
-        />
-        <Description 
-          disabled={!edit} 
-          edit={edit} 
-          // onChange={handleDescriptionChange}
-          value={description} 
-        />
+        </EditButton>
+      <Avatar src={avatar} alt={name}/>
+      <UserDetails>
+        <Name>{name}</Name>
+        <Description>{description}</Description>
       </UserDetails>
       <VerticalList>
         <ListItem>
-          <ItemData>{data.level}</ItemData>
-          <ItemLabel>level</ItemLabel>
+          <ItemData>{ranking.score}</ItemData>
+          <ItemLabel>Score</ItemLabel>
+        </ListItem>
+        <ListItem>
+          <ItemData>{ranking.rank}</ItemData>
+          <ItemLabel>Position</ItemLabel>
         </ListItem>
         <ListItem>
           <ItemData>###</ItemData>
-          <ItemLabel>Label</ItemLabel>
-        </ListItem>
-        <ListItem>
-          <ItemData>###</ItemData>
-          <ItemLabel>Label</ItemLabel>
+          <ItemLabel>Streak</ItemLabel>
         </ListItem>
       </VerticalList>
+      </Inner>
+
     </Wrapper>
 )
 }

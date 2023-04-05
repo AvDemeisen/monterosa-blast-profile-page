@@ -19,7 +19,7 @@ gap: 8px;
 width: 100%;
 height: 96px;
 color: white;
-background: #000000;
+background: #E83E7E;
 border-radius: 8px;
 `;
 

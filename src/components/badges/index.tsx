@@ -1,4 +1,5 @@
-import { Wrapper, Item, ProgressContainer, Percentage, Progress } from './styles';
+import completedIcon from '../../assets/completed-icon.png';
+import { Wrapper, Item, Image, Status, Icon} from './styles';
 import Label from '../label';
 import Data from '../data';
 interface ListProps {
@@ -10,13 +11,19 @@ interface ListProps {
 }
 
 const ProgressList = ({data}: ListProps) => <Wrapper>
-  {data.map(({badgeId, description, name}, index) => 
+  {data.map(({badgeId, description, name}) => 
     <Item key={badgeId}>
-      <ProgressContainer value={index * 10}>
+        <Image src="https://placehold.co/96" />
+        <>
         <Label text={name}/>
         <Data text={description}  color="grey"/>
-        <Progress id="css"  max="100"  value={index * 10} />
-      </ProgressContainer>
+        </>
+
+        <Status>
+        <Icon src={completedIcon} alt="Icon" />
+        <Data text={'completed'}  color="green"/>
+        </Status>
+
     </Item>
     )}
   </Wrapper>

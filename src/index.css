@@ -6,7 +6,7 @@
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Mulish', sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -14,10 +14,15 @@
   -webkit-text-size-adjust: 100%;
 
   --header-background: black;
-  --header-text: white;
+  --header-inner-background: white;
+  --header-text: black;
 
-  --tab-color: black;
+  --tabs-background: white;
+
+  --tab-color: grey;
+  --tab-color-active: black;
 }
+
 
 body {
   margin: 0;

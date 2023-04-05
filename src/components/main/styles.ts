@@ -1,8 +1,9 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Wrapper = styled.main`
-background-color: #fff;
+background-color: transparent;
 
+height: 100%;
 `
 
 import {
@@ -19,10 +20,20 @@ interface IndicatorProps {
   readonly widthOfTab: number;
 }
 
+export const Panel = styled.div`
 
+`
 
 export const Tabs = styled(TabsBase)`
-  width: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    height: 100%;
+    width: 100%;
+  border-top-left-radius: 16px;
+border-top-right-radius: 16px;
+border-bottom-left-radius: 0;
+border-bottom-right-radius: 0;
+background-color: var(--tabs-background);
 `;
 
 export const TabList = styled(TabListBase)`
@@ -31,26 +42,27 @@ export const TabList = styled(TabListBase)`
   display: grid;
   grid-template-columns: repeat(3,  minmax(auto, 1fr));
   justify-content: center;
-  margin: 0 16px;
+  
 
   &::after {
     content: '';
     position: absolute;
-    left: -16px;
+    left: 0;
     bottom: 0;
     height: 2px;
-    width: calc(100% + 32px);
+    width: 100%;
     background-color: grey;
   }
 `;
 
 export const Tab = styled(TabBase)`
+  border-top-left-radius: 16px;
 
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 15px;
+  padding: 0;
   border-color: transparent;
   border-style: solid;
   border-width: 0;
@@ -59,19 +71,29 @@ export const Tab = styled(TabBase)`
   cursor: pointer;
 height: 50px;
 
-font-weight: 700;
 font-size: 14px;
+font-weight: 700;
 line-height: 16px;
+letter-spacing: 0em;
 text-align: center;
 
+
 color: var(--tab-color);
+
+${({ selected }) =>
+    selected &&
+    css`
+color: var(--tab-color-active);
+    `};
 
 :focus-visible {
     outline: none;
 }
 `;
 
-export const TabPanel = styled(TabPanelBase)``;
+export const TabPanel = styled(TabPanelBase)`
+color: black;
+`;
 
 export const Indicator = styled.div<IndicatorProps>`
   height: 4px;

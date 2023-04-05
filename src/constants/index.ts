@@ -3,6 +3,8 @@ export const Authorization =
 
 export const baseUrl = 'https://m-id-public-api-dev-int24.lvis.io/v1/'
 
+export const gamificationBaseUrl = 'https://gamification-public-service-dev-int24.lvis.io'
+
 export const projectId = '386ee7d9-dcfd-488f-b9d3-313317eaef36'
 
 export const deviceId = '6df308cc-891d-4c80-8180-7f3d94c74f0e'
