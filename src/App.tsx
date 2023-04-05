@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 import Header from './components/header';
 import Main from './components/main';
-import { Wrapper } from './App.styles';
+import { Wrapper, Loader } from './App.styles';
 import { Authorization, baseUrl, projectId, deviceId, strategy, provider } from './constants'
 
 function App() {
@@ -40,7 +40,7 @@ function App() {
         .then(data => {
           console.log(data)
           setProfileData(data.data.profile);
-          setGameData(data.data.gamify)
+          setGameData(data.data.gamify.data)
         })
         .catch(error => {
           console.error(error);
@@ -49,16 +49,14 @@ function App() {
   }, [accessToken]);
 
   return (
-    <div>
-      {profileData ? (
     <Wrapper>
-      <Header url={baseUrl} projectId={projectId} data={profileData} />
+    {profileData ? (
+      <>
+        <Header url={baseUrl} projectId={projectId} data={profileData} />
       <Main data={gameData}/>
+      </>
+      ) : <Loader>LOADING</Loader>}
     </Wrapper>
-      ) : (
-        <p>Loading...</p>
-      )}
-    </div>
   );
 };
 

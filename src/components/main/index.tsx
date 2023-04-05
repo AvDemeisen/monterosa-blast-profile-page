@@ -6,6 +6,7 @@ import CardList from '../card-list';
 import 'react-tabs/style/react-tabs.css';
 import { Wrapper,  Tab, Tabs, TabList, TabPanel, Indicator} from './styles';
 function MyTabs({data}: any) {
+  const { achievements, badges, points} = data;
   const [activeTab, setActiveTab] = useState(0);
   const left = activeTab * 33
 
@@ -13,50 +14,23 @@ function MyTabs({data}: any) {
     setActiveTab(index);
   };
 
-  const list = [
-    {
-      label: 'One',
-      data: '###',
-      total: '###',
-      progress: 80
-    },
-    {
-      label: 'Two',
-      data: '###',
-      total: '###',
-      progress: 20
-    },
-    {
-      label: 'Three',
-      data: '###',
-      total: '###',
-      progress: 40
-    },
-    {
-      label: 'Four',
-      data: '###',
-      total: '###',
-      progress: 60
-    }
-  ]
-
   return (
     <Wrapper>
     <Tabs selectedIndex={activeTab} onSelect={handleTabChange}>
       <TabList>
-        <Tab>Tab one</Tab>
+        <Tab>Achievements</Tab>
         <Tab>Tab two</Tab>
         <Tab>Tab three</Tab>
         <Indicator left={left} widthOfTab={33} />
       </TabList>
       <TabPanel>
-        <List list={list}/>
+        <List data={achievements}/>
       </TabPanel>
       <TabPanel>
-      <ProgressList list={list}/>
+      <ProgressList data={badges}/>
       </TabPanel>
       <TabPanel>
-      <CardList list={list}/>
+      <CardList list={points}/>
       </TabPanel>
     </Tabs>
     </Wrapper>

@@ -13,7 +13,7 @@ const Header = ({ url, projectId, data }: HeaderProps) => {
   const [edit, setEdit] = useState(false)
   const [formEdited, setFormEdited] = useState(false);
   const [name, setName] = useState(data.username);
-  const [avatar, setAvatar] = useState(data.avatar);
+  const [avatar, setAvatar] = useState(data.appProfile.imageUrl);
   const [description, setDescription] = useState(data.userId);
 
   // const clickHandler = () => {
@@ -73,9 +73,9 @@ const Header = ({ url, projectId, data }: HeaderProps) => {
   return (
     <Wrapper>
       <UserDetails>
-        <EditButton>
+        {/* <EditButton>
         <img src={edit ? tickIcon : editIcon} alt="Icon" />
-        </EditButton>
+        </EditButton> */}
         <Avatar src={avatar} alt={name}/>
         <Name 
           disabled

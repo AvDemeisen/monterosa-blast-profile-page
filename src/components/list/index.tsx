@@ -2,13 +2,17 @@ import { Wrapper, Item } from './styles';
 import Label from '../label';
 import Data from '../data';
 interface ListProps {
-  list: { label: string, data: any }[];
+  data: { 
+    achievementId: string;
+    description: string;
+    name: string; 
+  }[];
 }
 
-const List = ({list}: ListProps) => <Wrapper>
-    {list.map(({label, data}) => <Item key={label}>
-<Label text={label}/>
-<Data text={data}/>
+const List = ({data}: ListProps) => <Wrapper>
+    {data.map(({name, description, achievementId}) => <Item key={achievementId}>
+<Label text={name}/>
+<Data text={description}/>
     </Item>)}
   </Wrapper>
 
