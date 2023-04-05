@@ -6,89 +6,87 @@ import { Wrapper, EditButton, UserDetails, Avatar, Name, Description, VerticalLi
 interface HeaderProps {
   url: string;
   data: any
-  setMethod: any;
+
   projectId: any;
-  externalId: any;
 }
-const Header = ({ url, projectId, externalId, data, setMethod }: HeaderProps) => {
+const Header = ({ url, projectId, data }: HeaderProps) => {
   const [edit, setEdit] = useState(false)
   const [formEdited, setFormEdited] = useState(false);
-  const [name, setName] = useState(data.name);
+  const [name, setName] = useState(data.username);
   const [avatar, setAvatar] = useState(data.avatar);
-  const [description, setDescription] = useState(data.description);
+  const [description, setDescription] = useState(data.userId);
 
-  const clickHandler = () => {
-    if (formEdited) {
-      saveChanges();
-    }
-    setEdit(!edit);
-  }
+  // const clickHandler = () => {
+  //   if (formEdited) {
+  //     saveChanges();
+  //   }
+  //   setEdit(!edit);
+  // }
 
-  const saveChanges = async () => {
+  // const saveChanges = async () => {
 
-    const res = await fetch(url, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        strategy: "simplified",
-        provider: "noLogin",
-        projectId,
-        externalId,
-        data: {
-          appProfile: {
-            events: {
-              match_one: {
-                score: 123,
-              },
-              match_x: {
-                screen_name: description,
-                avatar: avatar,
-                level: 99
-              }
-            },
-          }
-        }
-      })
-    });
+  //   const res = await fetch(url, {
+  //     method: 'PUT',
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify({
+  //       strategy: "simplified",
+  //       provider: "noLogin",
+  //       projectId,
+  //       data: {
+  //         appProfile: {
+  //           events: {
+  //             match_one: {
+  //               score: 123,
+  //             },
+  //             match_x: {
+  //               screen_name: description,
+  //               avatar: avatar,
+  //               level: 99
+  //             }
+  //           },
+  //         }
+  //       }
+  //     })
+  //   });
 
-    if (!res.ok) {
-      console.error(`Failed to save user data: ${res.status} - ${res.statusText}`);
-    } else {
-      setEdit(!edit);
-      setFormEdited(false);
-      setMethod({ ...data, name, description });
-    }
-  }
+  //   if (!res.ok) {
+  //     console.error(`Failed to save user data: ${res.status} - ${res.statusText}`);
+  //   } else {
+  //     setEdit(!edit);
+  //     setFormEdited(false);
+  //     setMethod({ ...data, name, description });
+  //   }
+  // }
 
-  const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setName(event.target.value);
-    setFormEdited(true);
-  };
+  // const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   setName(event.target.value);
+  //   setFormEdited(true);
+  // };
 
-  const handleDescriptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setDescription(event.target.value);
-    setFormEdited(true);
-  };
+  // const handleDescriptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   setDescription(event.target.value);
+  //   setFormEdited(true);
+  // };
 
   return (
     <Wrapper>
       <UserDetails>
-        <EditButton onClick={edit ? saveChanges : clickHandler}>
+        <EditButton>
         <img src={edit ? tickIcon : editIcon} alt="Icon" />
         </EditButton>
         <Avatar src={avatar} alt={name}/>
         <Name 
           disabled
           edit={false}  
-          onChange={handleNameChange}
+          // onChange={handleNameChange}
           value={name} 
         />
         <Description 
           disabled={!edit} 
           edit={edit} 
-          onChange={handleDescriptionChange}
+          // onChange={handleDescriptionChange}
           value={description} 
         />
       </UserDetails>

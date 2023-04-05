@@ -1,51 +1,67 @@
-import { useState } from 'react';
-import useSWR from 'swr';
+import { useEffect, useState } from 'react';
+
 import Header from './components/header';
 import Main from './components/main';
 import { Wrapper } from './App.styles';
+import { Authorization, baseUrl, projectId, deviceId, strategy, provider } from './constants'
 
 function App() {
-  const urlSearchParams = new URLSearchParams(new URL(window.location.href).search);
-  const projectId = urlSearchParams.get('projectId');
-  const externalId = urlSearchParams.get('externalId');
 
-  const [profile, setProfile] = useState({
-    avatar: '',
-    name: '',
-    description: '',
-    level: 0,
-    matches: []
-  });
+  const [accessToken, setAccessToken] = useState(null);
+  const [profileData, setProfileData] = useState(null);
+  const [gameData, setGameData] = useState(null)
 
-  const url = `https://m-id-public-api-dev-dev.monterosa.cloud/v1/user?projectId=${projectId}&externalId=${externalId}&strategy=simplified`
+  const checkUrl = `${baseUrl}user/check?projectId=${projectId}&strategy=${strategy}&deviceId=${deviceId}&provider=${provider}`;
+  const profileUrl = `${baseUrl}user/game-profile?projectId=${projectId}&strategy=${strategy}`;
 
-  const { data, error } = useSWR(url,
-    async (url: string) => {
-      const res = await fetch(url);
-      if (!res.ok) throw new Error(res.statusText);
-      const data = await res.json();
-      return data;
+  useEffect(() => {
+    fetch(checkUrl, {
+      headers: {
+        Authorization
+      }
+    })
+      .then(response => response.json())
+      .then(data => {
+        setAccessToken(data.data.accessToken);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }, []);
+
+  useEffect(() => {
+    if (accessToken) {
+      fetch(profileUrl, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`
+        }
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log(data)
+          setProfileData(data.data.profile);
+          setGameData(data.data.gamify)
+        })
+        .catch(error => {
+          console.error(error);
+        });
     }
-  );
-
-  if (error) return <div>Failed to load profile data</div>;
-  if (!data) return <div>Loading...</div>;
-  if (!data.data.username) return <div>User not found</div>;
-  
-  if (profile.name !== data.data.username) setProfile({
-    avatar: data.data.appProfile.events.match_x.avatar,
-    name: data.data.username,
-    description: data.data.appProfile.events.match_x.screen_name,
-    level: data.data.appProfile.events.match_x.level,
-    matches: []
-  });
+  }, [accessToken]);
 
   return (
+    <div>
+      {profileData ? (
     <Wrapper>
-      <Header url={url} projectId={projectId} externalId={externalId} data={profile} setMethod={setProfile} />
-      <Main />
+      <Header url={baseUrl} projectId={projectId} data={profileData} />
+      <Main data={gameData}/>
     </Wrapper>
+      ) : (
+        <p>Loading...</p>
+      )}
+    </div>
   );
-}
+};
 
 export default App;
+
+

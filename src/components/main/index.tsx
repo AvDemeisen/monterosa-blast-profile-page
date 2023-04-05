@@ -5,7 +5,7 @@ import CardList from '../card-list';
 
 import 'react-tabs/style/react-tabs.css';
 import { Wrapper,  Tab, Tabs, TabList, TabPanel, Indicator} from './styles';
-function MyTabs() {
+function MyTabs({data}: any) {
   const [activeTab, setActiveTab] = useState(0);
   const left = activeTab * 33
 
