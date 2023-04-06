@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import editIcon from '../../assets/edit-icon.png';
-import tickIcon from '../../assets/tick-icon.png';
+import editIcon from '@/assets/edit-icon.png';
+import tickIcon from '@/assets/tick-icon.png';
 import { Wrapper, EditButton, Inner, UserDetails, Avatar, Name, Description } from './styles';
 import HeaderList from './components/header-list';
 import HeaderCard from './components/header-card';

@@ -1,4 +1,4 @@
-import { colorMap } from '../../../styles/variables';
+import { colorMap } from '@/styles/variables';
 import styled from 'styled-components';
 
 interface TextProps {
