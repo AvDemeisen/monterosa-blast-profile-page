@@ -8,10 +8,10 @@ export const Wrapper = styled.div`
   height: 72px;
   width: 100%
   border-radius: 8px;
-  padding: 32px 8px 8px 8px;
+  padding: 8px;
   background: var(--header-card-background);
   border-radius: 8px;
-
+  gap: 8px;
 `;
 
 export const VerticalList = styled.div`

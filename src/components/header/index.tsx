@@ -1,20 +1,9 @@
 import { useState } from 'react';
 import editIcon from '../../assets/edit-icon.png';
 import tickIcon from '../../assets/tick-icon.png';
-import {
-  Wrapper,
-  EditButton,
-  Inner,
-  UserDetails,
-  Avatar,
-  Name,
-  Description,
-  VerticalList,
-  ListItem,
-  ItemLabel,
-  ItemData,
-} from './styles';
-import HeaderCard from '../header-card';
+import { Wrapper, EditButton, Inner, UserDetails, Avatar, Name, Description } from './styles';
+import HeaderList from './components/header-list';
+import HeaderCard from './components/header-card';
 
 interface HeaderProps {
   url: string;
@@ -40,20 +29,7 @@ const Header = ({ url, projectId, data, ranking }: HeaderProps) => {
           <Name>{name}</Name>
           <Description>{description}</Description>
         </UserDetails>
-        <VerticalList>
-          <ListItem>
-            <ItemData>{ranking.score}</ItemData>
-            <ItemLabel>Score</ItemLabel>
-          </ListItem>
-          <ListItem>
-            <ItemData>{ranking.rank}</ItemData>
-            <ItemLabel>Position</ItemLabel>
-          </ListItem>
-          <ListItem>
-            <ItemData>###</ItemData>
-            <ItemLabel>Streak</ItemLabel>
-          </ListItem>
-        </VerticalList>
+        <HeaderList rank={ranking.rank} score={ranking.score} />
         <HeaderCard rank={ranking.rank} />
       </Inner>
     </Wrapper>
