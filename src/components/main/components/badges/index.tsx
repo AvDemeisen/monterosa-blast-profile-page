@@ -9,12 +9,13 @@ interface ListProps {
     badgeId: string;
     description: string;
     name: string;
+    image: string;
   }[];
 }
 
 const Badges = ({ data }: ListProps) => (
   <Wrapper>
-    {data.map(({ badgeId, description, name }, i) => (
+    {data.map(({ badgeId, description, name, image }, i) => (
       <Item key={badgeId}>
         {i % 2 == 0 ? <Image src="https://placehold.co/96" /> : <Empty />}
 

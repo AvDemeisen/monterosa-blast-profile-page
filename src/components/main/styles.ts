@@ -98,6 +98,6 @@ export const Indicator = styled.div<IndicatorProps>`
   width: ${({ widthOfTab }) => widthOfTab}%;
   bottom: 0;
   transition: left 0.5s ease;
-  background-color: hotpink;
+  background-color: var(--tab-indicator);
   z-index: 2;
 `;

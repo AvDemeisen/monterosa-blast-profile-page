@@ -1,6 +1,6 @@
 import { SetStateAction, useState } from 'react';
 import Stats from './components/stats';
-import Achievements from './components/achievements';
+import Badges from './components/badges';
 import Rewards from './components/rewards';
 
 import 'react-tabs/style/react-tabs.css';
@@ -19,7 +19,7 @@ function MyTabs({ data }: any) {
       <Tabs selectedIndex={activeTab} onSelect={handleTabChange}>
         <TabList>
           <Tab>Stats</Tab>
-          <Tab>Achievements</Tab>
+          <Tab>Badges</Tab>
           <Tab>Rewards</Tab>
           <Indicator left={left} widthOfTab={33} />
         </TabList>
@@ -29,7 +29,7 @@ function MyTabs({ data }: any) {
           </TabPanel>
 
           <TabPanel>
-            <Achievements data={badges} />
+            <Badges data={badges} />
           </TabPanel>
 
           <TabPanel>

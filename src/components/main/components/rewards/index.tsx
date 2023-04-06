@@ -1,26 +1,47 @@
-import Label from '@/components/text/label';
 import Data from '@/components/text/data';
 import Progress from '@/components/progress';
 
-import { Wrapper, Item, Card, CardInner } from './styles';
+import {
+  Wrapper,
+  Item,
+  Card,
+  CardInner,
+  TextContainer,
+  DataContainer,
+  Description,
+} from './styles';
 
 interface RewardsProps {
-  list: { label: string; data: string; total: string; progress: any }[];
+  list: {
+    pointId: string;
+    description: string;
+    name: string;
+    score: number;
+    total: number;
+  }[];
 }
+
+const percentage = (partialValue: number, totalValue: number): number => {
+  return (100 * partialValue) / totalValue;
+};
 
 const Rewards = ({ list }: RewardsProps) => (
   <Wrapper>
-    {list.map(({ label, data, total, progress }, i) => (
-      <Item key={i}>
+    {list.map(({ pointId, description, name, score, total = 100 }, i) => (
+      <Item key={pointId}>
         <Card completed={i % 2 == 0}>
           <CardInner>
-            <Label text={label} color="white" />
-            <div>
-              <Data text={`${data}/`} color="white" />
-              <Data text={total} color="grey" />
-            </div>
+            <TextContainer>
+              <Description bold>{name}</Description>
+              <Description>{description}</Description>
+            </TextContainer>
+
+            <DataContainer>
+              <Data text={`${score} `} color="grey" />
+              <Data text={` / ${total}`} color="white" />
+            </DataContainer>
           </CardInner>
-          <Progress progress={progress} />
+          <Progress progress={percentage(score, total)} />
         </Card>
       </Item>
     ))}
