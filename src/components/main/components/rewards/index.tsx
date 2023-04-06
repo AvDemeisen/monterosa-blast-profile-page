@@ -37,8 +37,8 @@ const Rewards = ({ list }: RewardsProps) => (
             </TextContainer>
 
             <DataContainer>
-              <Data text={`${score} `} color="grey" />
-              <Data text={` / ${total}`} color="white" />
+              <Data text={`${score} /`} color="pale" />
+              <Data text={`/ ${total}`} color="white" />
             </DataContainer>
           </CardInner>
           <Progress progress={percentage(score, total)} />

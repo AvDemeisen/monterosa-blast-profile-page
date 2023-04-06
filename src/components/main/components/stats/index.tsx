@@ -13,8 +13,8 @@ const Stats = ({ data }: StatsProps) => (
   <Wrapper>
     {data.map(({ name, description, achievementId }) => (
       <Item key={achievementId}>
-        <Label text={name} opacity={'0.54'} />
-        <Data text={description} />
+        <Label text={name} opacity={'0.54'} align="left" />
+        <Data text={description} align="right" />
       </Item>
     ))}
   </Wrapper>

@@ -22,7 +22,7 @@
   --tab-indicator: var(--red);
 
   --card-text: var(--white);
-
+--pale-white: rgba(255, 255, 255, 0.54);
   --complete: var(--green);
   --incomplete: var(--red);
   --header-card-background: #1F5DFF;

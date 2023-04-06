@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import useSWR from 'swr';
 import Header from './components/header';
 import Main from './components/main';
 import { Wrapper, Loader, GlobalStyle } from './App.styles';
@@ -41,28 +40,39 @@ function App() {
       });
   }, []);
 
-  const fetcher = (url: string) =>
-    fetch(url, {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-    }).then((res) => res.json());
+  useEffect(() => {
+    if (accessToken) {
+      const fetchProfileData = () => {
+        fetch(profileUrl, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            setProfileData(data.data.profile);
+            setGameData(data.data.gamify.data);
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      };
 
-  const { data: rankingData, error: rankingError } = useSWR(gamificationUrl, fetcher, {
-    refreshInterval,
-  });
+      fetchProfileData();
+      const intervalId = setInterval(fetchProfileData, refreshInterval);
+      return () => clearInterval(intervalId);
+    }
+  }, [accessToken]);
 
   useEffect(() => {
     if (accessToken) {
-      fetch(profileUrl, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      })
+      fetch(gamificationUrl)
         .then((response) => response.json())
         .then((data) => {
-          setProfileData(data.data.profile);
-          setGameData(data.data.gamify.data);
+          setRanking({
+            rank: data.data.rank || 0,
+            score: data.data.score || 0,
+          });
         })
         .catch((error) => {
           console.error(error);
@@ -71,16 +81,26 @@ function App() {
   }, [accessToken]);
 
   useEffect(() => {
-    if (rankingError) {
-      console.error(rankingError);
+    if (accessToken) {
+      const fetchRankingData = () => {
+        fetch(gamificationUrl)
+          .then((response) => response.json())
+          .then((data) => {
+            setRanking({
+              rank: data.data.rank || 0,
+              score: data.data.score || 0,
+            });
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      };
+
+      fetchRankingData();
+      const intervalId = setInterval(fetchRankingData, refreshInterval);
+      return () => clearInterval(intervalId);
     }
-    if (rankingData) {
-      setRanking({
-        rank: rankingData.data.rank || 0,
-        score: rankingData.data.score || 0,
-      });
-    }
-  }, [rankingData, rankingError]);
+  }, [accessToken]);
 
   const updateScore = (points: number) => {
     fetch(
@@ -91,7 +111,7 @@ function App() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          userId: '64b4562c-0af6-422e-87f2-10489b9a2daa',
+          userId,
           projectId,
           points,
         }),
@@ -112,9 +132,8 @@ function App() {
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, []);
+  }, [userId]);
 
-  console.log(rankingData);
   return (
     <Wrapper>
       <GlobalStyle />

@@ -4,4 +4,5 @@ export const colorMap = {
   black: 'var(--black)',
   green: 'var(--complete)',
   red: 'var(--incomplete)',
+  pale: 'var(--pale-white)',
 } as any;
