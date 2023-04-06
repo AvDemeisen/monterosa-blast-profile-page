@@ -29,7 +29,7 @@ const Rewards = ({ list }: RewardsProps) => (
   <Wrapper>
     {list.map(({ pointId, description, name, score, total = 100 }, i) => (
       <Item key={pointId}>
-        <Card completed={i % 2 == 0}>
+        <Card completed={score >= total}>
           <CardInner>
             <TextContainer>
               <Description bold>{name}</Description>
