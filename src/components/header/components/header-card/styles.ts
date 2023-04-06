@@ -21,4 +21,9 @@ export const VerticalList = styled.div`
   width: 100%;
 `;
 
-export const Data = styled.span``;
+export const Data = styled.span`
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 16px;
+  letter-spacing: 0em;
+`;

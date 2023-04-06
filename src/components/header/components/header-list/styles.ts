@@ -11,7 +11,7 @@ export const Wrapper = styled.ul`
 `;
 
 export const ListItem = styled.li`
-  padding: 16px 0;
+  padding: 0;
 `;
 export const ItemLabel = styled.span`
   font-size: 14px;
