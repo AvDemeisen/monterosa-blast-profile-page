@@ -31,7 +31,7 @@ const Header = ({ url, projectId, data, ranking }: HeaderProps) => {
           <Description>{description}</Description>
         </UserDetails>
         <HeaderList rank={ranking.rank} score={ranking.score} />
-        <HeaderCard rank={ranking.rank} />
+        <HeaderCard rank={ranking.score} />
       </Inner>
     </Wrapper>
   );
