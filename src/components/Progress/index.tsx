@@ -1,7 +1,5 @@
 import { Wrapper } from './styles';
 
-const Progress = ({ progress }: any) => {
-  return <Wrapper progress={progress} />;
-};
+const Progress = ({ progress }: any) => <Wrapper progress={progress} />;
 
 export default Progress;
