@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "babel-plugin-styled-components": "^2.1.1",
+    "path": "^0.12.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-tabs": "^6.0.0",

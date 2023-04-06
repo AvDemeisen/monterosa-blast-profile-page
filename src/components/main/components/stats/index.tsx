@@ -1,7 +1,7 @@
 import { Wrapper, Item } from './styles';
-import Label from '../label';
-import Data from '../data';
-interface ListProps {
+import Label from '@/components/text/label';
+import Data from '@/components/text/data';
+interface StatsProps {
   data: {
     achievementId: string;
     description: string;
@@ -9,15 +9,15 @@ interface ListProps {
   }[];
 }
 
-const List = ({ data }: ListProps) => (
+const Stats = ({ data }: StatsProps) => (
   <Wrapper>
     {data.map(({ name, description, achievementId }) => (
       <Item key={achievementId}>
-        <Label text={name} />
+        <Label text={name} opacity={'0.54'} />
         <Data text={description} />
       </Item>
     ))}
   </Wrapper>
 );
 
-export default List;
+export default Stats;

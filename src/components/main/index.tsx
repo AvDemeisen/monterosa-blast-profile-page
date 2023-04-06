@@ -1,7 +1,7 @@
 import { SetStateAction, useState } from 'react';
-import List from '../list';
-import Badges from '../badges';
-import CardList from '../card-list';
+import Stats from './components/stats';
+import Achievements from './components/achievements';
+import Rewards from './components/rewards';
 
 import 'react-tabs/style/react-tabs.css';
 import { Wrapper, Panel, Tab, Tabs, TabList, TabPanel, Indicator } from './styles';
@@ -25,15 +25,15 @@ function MyTabs({ data }: any) {
         </TabList>
         <Panel>
           <TabPanel>
-            <List data={achievements} />
+            <Stats data={achievements} />
           </TabPanel>
 
           <TabPanel>
-            <Badges data={badges} />
+            <Achievements data={badges} />
           </TabPanel>
 
           <TabPanel>
-            <CardList list={points} />
+            <Rewards list={points} />
           </TabPanel>
         </Panel>
       </Tabs>

@@ -1,5 +1,5 @@
 import { Wrapper, VerticalList, Data } from './styles';
-import Progress from '../../../Progress';
+import Progress from '../../../progress';
 
 interface HeaderCardProps {
   rank: number;

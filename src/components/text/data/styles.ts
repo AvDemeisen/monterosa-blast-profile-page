@@ -1,16 +1,9 @@
+import { colorMap } from '@/styles/variables';
 import styled from 'styled-components';
 
 interface TextProps {
   color: string;
 }
-
-const colorMap = {
-  white: 'var(--white)',
-  grey: 'var(--grey)',
-  black: 'var(--black)',
-  green: 'var(--complete)',
-  red: 'var(--incomplete)',
-} as any;
 
 export const Text = styled.span<TextProps>`
   font-weight: 800;
@@ -20,7 +13,7 @@ export const Text = styled.span<TextProps>`
 
   overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 2; /* number of lines to show */
+  -webkit-line-clamp: 2;
   line-clamp: 2;
   -webkit-box-orient: vertical;
 `;

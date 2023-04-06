@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components';
 
+import 'react-tabs/style/react-tabs.css';
+
 export const Wrapper = styled.main`
   background-color: transparent;
 

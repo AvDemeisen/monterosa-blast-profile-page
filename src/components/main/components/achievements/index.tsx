@@ -1,8 +1,9 @@
-import completedIcon from '../../assets/completed-icon.png';
-import lockedIcon from '../../assets/locked-icon.png';
+import completedIcon from '@/assets/completed-icon.png';
+import lockedIcon from '@/assets/locked-icon.png';
+import Label from '@/components/text/label';
+import Data from '@/components/text/data';
 import { Wrapper, Item, Image, Status, Icon, Empty } from './styles';
-import Label from '../label';
-import Data from '../data';
+
 interface ListProps {
   data: {
     badgeId: string;

@@ -1,12 +1,14 @@
+import Label from '@/components/text/label';
+import Data from '@/components/text/data';
+import Progress from '@/components/progress';
+
 import { Wrapper, Item, Card, CardInner } from './styles';
-import Label from '../label';
-import Data from '../data';
-import Progress from '../Progress';
-interface CardListProps {
+
+interface RewardsProps {
   list: { label: string; data: string; total: string; progress: any }[];
 }
 
-const CardList = ({ list }: CardListProps) => (
+const Rewards = ({ list }: RewardsProps) => (
   <Wrapper>
     {list.map(({ label, data, total, progress }, i) => (
       <Item key={i}>
@@ -25,4 +27,4 @@ const CardList = ({ list }: CardListProps) => (
   </Wrapper>
 );
 
-export default CardList;
+export default Rewards;
