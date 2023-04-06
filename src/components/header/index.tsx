@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import editIcon from '@/assets/edit-icon.png';
 import tickIcon from '@/assets/tick-icon.png';
+import profileHeader from '@/assets/profile-header.jpg';
 import { Wrapper, EditButton, Inner, UserDetails, Avatar, Name, Description } from './styles';
 import HeaderList from './components/header-list';
 import HeaderCard from './components/header-card';
@@ -19,7 +20,7 @@ const Header = ({ url, projectId, data, ranking }: HeaderProps) => {
   const [description, setDescription] = useState(data.userId);
 
   return (
-    <Wrapper>
+    <Wrapper style={{ backgroundImage: `url(${profileHeader})` }}>
       <Inner>
         <EditButton>
           <img src={edit ? tickIcon : editIcon} alt="Icon" />

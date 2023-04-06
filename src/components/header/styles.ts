@@ -3,7 +3,9 @@ import styled from 'styled-components';
 export const Wrapper = styled.header`
   position: relative;
   padding: 32px;
-  background: var(--header-background);
+  background-position: center;
+  background-size: cover;
+  background-color: var(--header-background);
   width: 100%;
   margin: 0 auto;
 `;

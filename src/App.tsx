@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-
+import useSWR from 'swr';
 import Header from './components/header';
 import Main from './components/main';
 import { Wrapper, Loader, GlobalStyle } from './App.styles';
@@ -23,6 +23,7 @@ function App() {
   const checkUrl = `${baseUrl}user/check?projectId=${projectId}&strategy=${strategy}&deviceId=${deviceId}&provider=${provider}`;
   const profileUrl = `${baseUrl}user/game-profile?projectId=${projectId}&strategy=${strategy}`;
   const gamificationUrl = `${gamificationBaseUrl}/projects/${projectId}/leaderboards/overall/users/${userId}`;
+
   useEffect(() => {
     fetch(checkUrl, {
       headers: {
@@ -38,6 +39,16 @@ function App() {
         console.error(error);
       });
   }, []);
+  const fetcher = (url: string) =>
+    fetch(url, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    }).then((res) => res.json());
+
+  const { data: rankingData, error: rankingError } = useSWR(gamificationUrl, fetcher, {
+    refreshInterval: 5000,
+  });
 
   useEffect(() => {
     if (accessToken) {
@@ -57,22 +68,52 @@ function App() {
     }
   }, [accessToken]);
 
+  // ...
+
   useEffect(() => {
-    if (accessToken) {
-      fetch(gamificationUrl)
-        .then((response) => response.json())
-        .then((data) => {
-          setRanking({
-            rank: data.data.rank || 0,
-            score: data.data.score || 0,
-          });
-        })
-        .catch((error) => {
-          console.error(error);
-        });
+    if (rankingError) {
+      console.error(rankingError);
     }
-  }, [accessToken]);
-  console.log(gameData);
+    if (rankingData) {
+      setRanking({
+        rank: rankingData.data.rank || 0,
+        score: rankingData.data.score || 0,
+      });
+    }
+  }, [rankingData, rankingError]);
+
+  console.log(userId);
+  function updateScore() {
+    fetch(
+      `${gamificationBaseUrl}/projects/${projectId}/scores/2ffe8e46-616d-40ce-a1f0-0e5d0da729d3`,
+      {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          userId: '64b4562c-0af6-422e-87f2-10489b9a2daa',
+          projectId,
+          points: 10,
+        }),
+      },
+    )
+      .then((response) => response.json())
+      .catch((error) => console.error(error));
+  }
+
+  useEffect(() => {
+    function handleKeyDown(event: { keyCode: number }) {
+      if (event.keyCode === 49) updateScore();
+    }
+
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+
   return (
     <Wrapper>
       <GlobalStyle />
