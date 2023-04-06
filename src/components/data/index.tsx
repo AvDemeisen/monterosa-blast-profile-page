@@ -1,5 +1,9 @@
 import { Text } from './styles';
 
-const Data = ({ text, color = '#000000' }: any) => <Text color={color}>{text}</Text>;
+interface DataProps {
+  text: string;
+  color: string;
+}
+const Data = ({ text, color = 'black' }: DataProps) => <Text color={color}>{text}</Text>;
 
 export default Data;

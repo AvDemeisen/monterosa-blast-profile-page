@@ -51,8 +51,6 @@ export const TabList = styled(TabListBase)`
 `;
 
 export const Tab = styled(TabBase)`
-  border-top-left-radius: 16px;
-
   position: relative;
   display: flex;
   justify-content: center;
@@ -77,6 +75,8 @@ export const Tab = styled(TabBase)`
   ${({ selected }) =>
     selected &&
     css`
+      border-top-left-radius: 16px;
+      border-top-right-radius: 16px;
       color: var(--tab-color-active);
     `};
 

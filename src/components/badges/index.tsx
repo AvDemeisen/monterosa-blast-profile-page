@@ -1,5 +1,6 @@
 import completedIcon from '../../assets/completed-icon.png';
-import { Wrapper, Item, Image, Status, Icon } from './styles';
+import lockedIcon from '../../assets/locked-icon.png';
+import { Wrapper, Item, Image, Status, Icon, Empty } from './styles';
 import Label from '../label';
 import Data from '../data';
 interface ListProps {
@@ -12,17 +13,21 @@ interface ListProps {
 
 const ProgressList = ({ data }: ListProps) => (
   <Wrapper>
-    {data.map(({ badgeId, description, name }) => (
+    {data.map(({ badgeId, description, name }, i) => (
       <Item key={badgeId}>
-        <Image src="https://placehold.co/96" />
+        {i % 2 == 0 ? <Image src="https://placehold.co/96" /> : <Empty />}
+
         <>
           <Label text={name} />
           <Data text={description} color="grey" />
         </>
 
         <Status>
-          <Icon src={completedIcon} alt="Icon" />
-          <Data text={'completed'} color="green" />
+          <Icon src={i % 2 == 0 ? completedIcon : lockedIcon} alt="Icon" />
+          <Data
+            text={i % 2 == 0 ? 'Completed' : 'Incomplete'}
+            color={i % 2 == 0 ? 'green' : 'black'}
+          />
         </Status>
       </Item>
     ))}

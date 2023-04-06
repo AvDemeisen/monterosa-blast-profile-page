@@ -13,7 +13,7 @@ export const Item = styled.li`
   gap: 8px;
   align-items: center;
   border-radius: 8px;
-  border: 1px solid grey;
+  border: 1px solid var(--grey);
   padding: 8px;
 `;
 
@@ -21,6 +21,13 @@ export const Image = styled.img`
   height: 96px;
   width: 96px;
   border-radius: 50%;
+`;
+
+export const Empty = styled.div`
+  height: 96px;
+  width: 96px;
+  border-radius: 50%;
+  background-color: var(--grey);
 `;
 
 export const Status = styled.div`

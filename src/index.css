@@ -21,8 +21,14 @@
 
   --loader-text: white;
 
-  --tab-color: grey;
+  --tab-color: #808080;
   --tab-color-active: black;
+  --card-text: #ffffff;
+  --black: black;
+  --grey: #808080;
+  --complete: #11C094;
+  --incomplete: #E83E7E;
+  --header-card-background: #1F5DFF;
 }
 
 body {

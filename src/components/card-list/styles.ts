@@ -7,7 +7,12 @@ export const Wrapper = styled.ul`
   padding: 16px;
 `;
 export const Item = styled.li``;
-export const Card = styled.div`
+
+interface CardProps {
+  completed: boolean;
+}
+
+export const Card = styled.div<CardProps>`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -17,8 +22,8 @@ export const Card = styled.div`
 
   width: 100%;
   height: 96px;
-  color: white;
-  background: #e83e7e;
+  color: var(--card-text);
+  background-color: ${({ completed }) => (completed ? 'var(--complete)' : 'var(--incomplete)')};
   border-radius: 8px;
 `;
 

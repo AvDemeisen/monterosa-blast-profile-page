@@ -13,9 +13,8 @@ import {
   ListItem,
   ItemLabel,
   ItemData,
-  Card,
 } from './styles';
-import Progress from '../Progress';
+import HeaderCard from '../header-card';
 
 interface HeaderProps {
   url: string;
@@ -29,60 +28,6 @@ const Header = ({ url, projectId, data, ranking }: HeaderProps) => {
   const [name, setName] = useState(data.username);
   const [avatar, setAvatar] = useState(data.appProfile.imageUrl);
   const [description, setDescription] = useState(data.userId);
-
-  // const clickHandler = () => {
-  //   if (formEdited) {
-  //     saveChanges();
-  //   }
-  //   setEdit(!edit);
-  // }
-
-  // const saveChanges = async () => {
-
-  //   const res = await fetch(url, {
-  //     method: 'PUT',
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     },
-  //     body: JSON.stringify({
-  //       strategy: "simplified",
-  //       provider: "noLogin",
-  //       projectId,
-  //       data: {
-  //         appProfile: {
-  //           events: {
-  //             match_one: {
-  //               score: 123,
-  //             },
-  //             match_x: {
-  //               screen_name: description,
-  //               avatar: avatar,
-  //               level: 99
-  //             }
-  //           },
-  //         }
-  //       }
-  //     })
-  //   });
-
-  //   if (!res.ok) {
-  //     console.error(`Failed to save user data: ${res.status} - ${res.statusText}`);
-  //   } else {
-  //     setEdit(!edit);
-  //     setFormEdited(false);
-  //     setMethod({ ...data, name, description });
-  //   }
-  // }
-
-  // const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   setName(event.target.value);
-  //   setFormEdited(true);
-  // };
-
-  // const handleDescriptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   setDescription(event.target.value);
-  //   setFormEdited(true);
-  // };
 
   return (
     <Wrapper>
@@ -109,10 +54,7 @@ const Header = ({ url, projectId, data, ranking }: HeaderProps) => {
             <ItemLabel>Streak</ItemLabel>
           </ListItem>
         </VerticalList>
-        <Card>
-          <span>Level {ranking.rank + 1} </span>
-          <Progress progress={40} />
-        </Card>
+        <HeaderCard rank={ranking.rank} />
       </Inner>
     </Wrapper>
   );

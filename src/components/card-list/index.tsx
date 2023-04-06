@@ -8,9 +8,9 @@ interface CardListProps {
 
 const CardList = ({ list }: CardListProps) => (
   <Wrapper>
-    {list.map(({ label, data, total, progress }) => (
-      <Item key={label}>
-        <Card>
+    {list.map(({ label, data, total, progress }, i) => (
+      <Item key={i}>
+        <Card completed={i % 2 == 0}>
           <CardInner>
             <Label text={label} color="white" />
             <div>
