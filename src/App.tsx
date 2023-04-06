@@ -19,6 +19,7 @@ function App() {
   const [ranking, setRanking] = useState({ rank: 0, score: 0 });
   const [gameData, setGameData] = useState(null);
   const [userId, setUserId] = useState(null);
+  const refreshInterval = 2000;
 
   const checkUrl = `${baseUrl}user/check?projectId=${projectId}&strategy=${strategy}&deviceId=${deviceId}&provider=${provider}`;
   const profileUrl = `${baseUrl}user/game-profile?projectId=${projectId}&strategy=${strategy}`;
@@ -47,7 +48,7 @@ function App() {
     }).then((res) => res.json());
 
   const { data: rankingData, error: rankingError } = useSWR(gamificationUrl, fetcher, {
-    refreshInterval: 5000,
+    refreshInterval,
   });
 
   useEffect(() => {
@@ -68,8 +69,6 @@ function App() {
     }
   }, [accessToken]);
 
-  // ...
-
   useEffect(() => {
     if (rankingError) {
       console.error(rankingError);
@@ -82,8 +81,7 @@ function App() {
     }
   }, [rankingData, rankingError]);
 
-  console.log(userId);
-  function updateScore() {
+  const updateScore = (points: number) => {
     fetch(
       `${gamificationBaseUrl}/projects/${projectId}/scores/2ffe8e46-616d-40ce-a1f0-0e5d0da729d3`,
       {
@@ -94,18 +92,19 @@ function App() {
         body: JSON.stringify({
           userId: '64b4562c-0af6-422e-87f2-10489b9a2daa',
           projectId,
-          points: 10,
+          points,
         }),
       },
     )
       .then((response) => response.json())
       .catch((error) => console.error(error));
-  }
+  };
 
   useEffect(() => {
-    function handleKeyDown(event: { keyCode: number }) {
-      if (event.keyCode === 49) updateScore();
-    }
+    const handleKeyDown = (event: { key: string }) => {
+      if (event.key === '+') updateScore(10);
+      else if (event.key === '-') updateScore(-10);
+    };
 
     document.addEventListener('keydown', handleKeyDown);
 
