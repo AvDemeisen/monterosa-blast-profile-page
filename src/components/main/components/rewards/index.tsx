@@ -1,5 +1,5 @@
 import Data from '@/components/text/data';
-// import Progress from '@/components/foo';
+import Progress from '@/components/foo';
 
 import {
   Wrapper,
@@ -41,7 +41,7 @@ const Rewards = ({ list }: RewardsProps) => (
               <Data text={` / ${total}`} color="white" />
             </DataContainer>
           </CardInner>
-          {/* <Progress progress={percentage(score, total)} /> */}
+          <Progress progress={percentage(score, total)} />
         </Card>
       </Item>
     ))}
