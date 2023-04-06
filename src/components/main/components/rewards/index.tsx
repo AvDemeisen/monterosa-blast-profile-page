@@ -1,5 +1,5 @@
-import Data from '../../../../components/text/data';
-import Progress from '../../../../components/progress';
+import Data from '../../../text/data';
+import Progress from '../../../progress';
 
 import {
   Wrapper,
