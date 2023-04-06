@@ -16,7 +16,7 @@ function App() {
   const [accessToken, setAccessToken] = useState(null);
   const [profileData, setProfileData] = useState(null);
   const [ranking, setRanking] = useState({ rank: 0, score: 0 });
-  const [gameData, setGameData] = useState(null);
+  const [gameData, setGameData] = useState<any>(null);
   const [userId, setUserId] = useState(null);
   const refreshInterval = 60000;
 
@@ -125,6 +125,44 @@ function App() {
     const handleKeyDown = (event: { key: string }) => {
       if (event.key === '+') updateScore(10);
       else if (event.key === '-') updateScore(-10);
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [userId]);
+
+  // if (gameData?.points) console.log(gameData?.points.map(({ score }) => score));
+
+  const updatePoints = (points: number, operation: string) => {
+    fetch(`${baseUrl}user/game-profile`, {
+      method: 'PUT',
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        projectId,
+        strategy,
+        data: {
+          type: 'points',
+          operation,
+          value: points,
+        },
+      }),
+    })
+      .then((response) => response.json())
+      // .then((rs) => console.log(rs))
+      .catch((error) => console.error(error));
+  };
+
+  useEffect(() => {
+    const handleKeyDown = (event: { keyCode: number }) => {
+      if (event.keyCode === 49) {
+        updatePoints(1000, 'add');
+      }
     };
 
     document.addEventListener('keydown', handleKeyDown);
