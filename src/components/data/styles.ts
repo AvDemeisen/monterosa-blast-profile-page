@@ -19,5 +19,8 @@ export const Text = styled.span<TextProps>`
   color: ${({ color }) => colorMap[color]};
 
   overflow: hidden;
-  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* number of lines to show */
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
 `;

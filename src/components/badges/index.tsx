@@ -11,14 +11,14 @@ interface ListProps {
   }[];
 }
 
-const ProgressList = ({ data }: ListProps) => (
+const Badges = ({ data }: ListProps) => (
   <Wrapper>
     {data.map(({ badgeId, description, name }, i) => (
       <Item key={badgeId}>
         {i % 2 == 0 ? <Image src="https://placehold.co/96" /> : <Empty />}
 
         <>
-          <Label text={name} />
+          <Label text={name} color="black" />
           <Data text={description} color="grey" />
         </>
 
@@ -34,4 +34,4 @@ const ProgressList = ({ data }: ListProps) => (
   </Wrapper>
 );
 
-export default ProgressList;
+export default Badges;
