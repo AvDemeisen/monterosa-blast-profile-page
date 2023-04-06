@@ -29,3 +29,9 @@ export const Data = styled.span`
   line-height: 16px;
   letter-spacing: 0em;
 `;
+
+export const DataContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: end;
+`;
