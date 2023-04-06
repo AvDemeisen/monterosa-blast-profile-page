@@ -1,6 +1,6 @@
 import { Wrapper, Item } from './styles';
-import Label from '@/components/text/label';
-import Data from '@/components/text/data';
+import Label from '../../../../components/text/label';
+import Data from '../../../../components/text/data';
 interface StatsProps {
   data: {
     achievementId: string;
