@@ -1,30 +1,30 @@
 import { useState } from 'react';
 import editIcon from '../../assets/edit-icon.png';
 import tickIcon from '../../assets/tick-icon.png';
-import { 
+import {
   Wrapper,
-  EditButton, 
-  Inner, 
-  UserDetails, 
-  Avatar, 
-  Name, 
-  Description, 
-  VerticalList, 
-  ListItem, 
-  ItemLabel, 
+  EditButton,
+  Inner,
+  UserDetails,
+  Avatar,
+  Name,
+  Description,
+  VerticalList,
+  ListItem,
+  ItemLabel,
   ItemData,
-  Card
-} from './styles'
+  Card,
+} from './styles';
 import Progress from '../Progress';
 
 interface HeaderProps {
   url: string;
-  data: any
-  ranking: { rank: number, score: number}
+  data: any;
+  ranking: { rank: number; score: number };
   projectId: any;
 }
 const Header = ({ url, projectId, data, ranking }: HeaderProps) => {
-  const [edit, setEdit] = useState(false)
+  const [edit, setEdit] = useState(false);
   const [formEdited, setFormEdited] = useState(false);
   const [name, setName] = useState(data.username);
   const [avatar, setAvatar] = useState(data.appProfile.imageUrl);
@@ -88,35 +88,34 @@ const Header = ({ url, projectId, data, ranking }: HeaderProps) => {
     <Wrapper>
       <Inner>
         <EditButton>
-        <img src={edit ? tickIcon : editIcon} alt="Icon" />
+          <img src={edit ? tickIcon : editIcon} alt="Icon" />
         </EditButton>
-      <Avatar src={avatar} alt={name}/>
-      <UserDetails>
-        <Name>{name}</Name>
-        <Description>{description}</Description>
-      </UserDetails>
-      <VerticalList>
-        <ListItem>
-          <ItemData>{ranking.score}</ItemData>
-          <ItemLabel>Score</ItemLabel>
-        </ListItem>
-        <ListItem>
-          <ItemData>{ranking.rank}</ItemData>
-          <ItemLabel>Position</ItemLabel>
-        </ListItem>
-        <ListItem>
-          <ItemData>###</ItemData>
-          <ItemLabel>Streak</ItemLabel>
-        </ListItem>
-      </VerticalList>
-      <Card>
-      <span>Level {ranking.rank + 1} </span>
-      <Progress progress={40} />
-      </Card>
+        <Avatar src={avatar} alt={name} />
+        <UserDetails>
+          <Name>{name}</Name>
+          <Description>{description}</Description>
+        </UserDetails>
+        <VerticalList>
+          <ListItem>
+            <ItemData>{ranking.score}</ItemData>
+            <ItemLabel>Score</ItemLabel>
+          </ListItem>
+          <ListItem>
+            <ItemData>{ranking.rank}</ItemData>
+            <ItemLabel>Position</ItemLabel>
+          </ListItem>
+          <ListItem>
+            <ItemData>###</ItemData>
+            <ItemLabel>Streak</ItemLabel>
+          </ListItem>
+        </VerticalList>
+        <Card>
+          <span>Level {ranking.rank + 1} </span>
+          <Progress progress={40} />
+        </Card>
       </Inner>
-
     </Wrapper>
-)
-}
+  );
+};
 
-export default Header
+export default Header;

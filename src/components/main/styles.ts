@@ -1,10 +1,10 @@
 import styled, { css } from 'styled-components';
 
 export const Wrapper = styled.main`
-background-color: transparent;
+  background-color: transparent;
 
-height: 100%;
-`
+  height: 100%;
+`;
 
 import {
   Tab as TabBase,
@@ -13,36 +13,31 @@ import {
   TabPanel as TabPanelBase,
 } from 'react-tabs';
 
-
-
 interface IndicatorProps {
   readonly left: number;
   readonly widthOfTab: number;
 }
 
-export const Panel = styled.div`
-
-`
+export const Panel = styled.div``;
 
 export const Tabs = styled(TabsBase)`
-    display: grid;
-    grid-template-rows: auto 1fr;
-    height: 100%;
-    width: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  height: 100%;
+  width: 100%;
   border-top-left-radius: 16px;
-border-top-right-radius: 16px;
-border-bottom-left-radius: 0;
-border-bottom-right-radius: 0;
-background-color: var(--tabs-background);
+  border-top-right-radius: 16px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  background-color: var(--tabs-background);
 `;
 
 export const TabList = styled(TabListBase)`
   height: 100%;
   position: relative;
   display: grid;
-  grid-template-columns: repeat(3,  minmax(auto, 1fr));
+  grid-template-columns: repeat(3, minmax(auto, 1fr));
   justify-content: center;
-  
 
   &::after {
     content: '';
@@ -69,30 +64,29 @@ export const Tab = styled(TabBase)`
 
   text-decoration: none;
   cursor: pointer;
-height: 50px;
+  height: 50px;
 
-font-size: 14px;
-font-weight: 700;
-line-height: 16px;
-letter-spacing: 0em;
-text-align: center;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 16px;
+  letter-spacing: 0em;
+  text-align: center;
 
+  color: var(--tab-color);
 
-color: var(--tab-color);
-
-${({ selected }) =>
+  ${({ selected }) =>
     selected &&
     css`
-color: var(--tab-color-active);
+      color: var(--tab-color-active);
     `};
 
-:focus-visible {
+  :focus-visible {
     outline: none;
-}
+  }
 `;
 
 export const TabPanel = styled(TabPanelBase)`
-color: black;
+  color: black;
 `;
 
 export const Indicator = styled.div<IndicatorProps>`
