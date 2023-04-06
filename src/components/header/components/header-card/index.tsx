@@ -1,5 +1,5 @@
 import { Wrapper, VerticalList } from './styles';
-// import Progress from '@/components/progress';
+import Foo from '@/components/foo';
 
 interface HeaderCardProps {
   rank: number;
@@ -11,7 +11,7 @@ const HeaderCard = ({ rank }: HeaderCardProps) => (
       <span>Level {rank + 1} </span>
     </VerticalList>
 
-    {/* <Progress progress={40} /> */}
+    <Foo progress={40} />
   </Wrapper>
 );
 export default HeaderCard;
