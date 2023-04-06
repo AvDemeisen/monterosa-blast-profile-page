@@ -1,11 +1,11 @@
 import { Wrapper, VerticalList } from './styles';
 import Foo from '@/components/foo';
-
+import levelBg from '@/assets/level-bg.jpg';
 interface HeaderCardProps {
   rank: number;
 }
 const HeaderCard = ({ rank }: HeaderCardProps) => (
-  <Wrapper>
+  <Wrapper style={{ backgroundImage: `url(${levelBg})` }}>
     <VerticalList>
       <span>foo</span>
       <span>Level {rank + 1} </span>

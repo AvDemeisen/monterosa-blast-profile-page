@@ -10,7 +10,9 @@ export const Wrapper = styled.div`
   border-radius: 8px;
   padding: 8px;
   background: var(--header-card-background);
+  background-position: center center;
   border-radius: 8px;
+  background-size: cover;
   gap: 8px;
 `;
 

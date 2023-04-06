@@ -19,7 +19,7 @@ function App() {
   const [ranking, setRanking] = useState({ rank: 0, score: 0 });
   const [gameData, setGameData] = useState(null);
   const [userId, setUserId] = useState(null);
-  const refreshInterval = 2000;
+  const refreshInterval = 60000;
 
   const checkUrl = `${baseUrl}user/check?projectId=${projectId}&strategy=${strategy}&deviceId=${deviceId}&provider=${provider}`;
   const profileUrl = `${baseUrl}user/game-profile?projectId=${projectId}&strategy=${strategy}`;
@@ -40,6 +40,7 @@ function App() {
         console.error(error);
       });
   }, []);
+
   const fetcher = (url: string) =>
     fetch(url, {
       headers: {
@@ -113,6 +114,7 @@ function App() {
     };
   }, []);
 
+  console.log(rankingData);
   return (
     <Wrapper>
       <GlobalStyle />
