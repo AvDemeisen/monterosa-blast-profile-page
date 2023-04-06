@@ -48,7 +48,7 @@ export const TabList = styled(TabListBase)`
     bottom: 0;
     height: 2px;
     width: 100%;
-    background-color: grey;
+    background-color: var(--tabs-border);
   }
 `;
 

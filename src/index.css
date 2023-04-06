@@ -1,20 +1,30 @@
 :root {
-  --header-background: black;
-  --header-inner-background: white;
-  --header-text: black;
 
-  --tabs-background: white;
-
-  --loader-text: white;
-  --app-background: #242424;
-  --app-color: rgba(255, 255, 255, 0.87);
-  --tab-color: #808080;
-  --tab-color-active: black;
-  --card-text: #ffffff;
   --black: black;
   --grey: #808080;
-  --complete: #11C094;
-  --incomplete: #E83E7E;
+  --white: #ffffff;
+  --red: #E83E7E;
+  --green: #11C094;
+
+  --header-background: var(--black);
+  --header-inner-background: var(--white);
+  --header-text: var(--black);
+
+  --loader-text: var(--white);
+  --app-background: #242424;
+  --app-color: rgba(255, 255, 255, 0.87);
+
+  --app-inner-background: var(--black);
+  --tabs-background: var(--white);
+  --tabs-border: var(--grey);
+  --tab-color: var(--grey);
+  --tab-color-active: var(--black);
+  --tab-indicator: var(--red);
+
+  --card-text: var(--white);
+
+  --complete: var(--green);
+  --incomplete: var(--red);
   --header-card-background: #1F5DFF;
 
   font-family: 'Mulish', sans-serif;

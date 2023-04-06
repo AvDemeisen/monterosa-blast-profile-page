@@ -10,6 +10,7 @@ export const Wrapper = styled.div`
   text-align: center;
   display: grid;
   grid-template-rows: auto 1fr;
+  background: var(--app-inner-background);
 `;
 
 export const Loader = styled.span`
