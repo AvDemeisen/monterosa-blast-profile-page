@@ -24,27 +24,29 @@ const imageMap = {
 } as any;
 
 const Badges = ({ data }: ListProps) => {
-  const completed = true;
   return (
     <Wrapper>
-      {data.map(({ badgeId, description, name, image }, i) => (
-        <Item key={badgeId}>
-          {completed ? <Image src={imageMap[i + 1]} /> : <Empty />}
+      {data.map(({ badgeId, description, name, image }, i) => {
+        const completed = i < 3;
+        return (
+          <Item key={badgeId}>
+            {completed ? <Image src={imageMap[i + 1]} /> : <Empty />}
 
-          <>
-            <Label text={name} color="black" />
-            <Data text={description} color="grey" />
-          </>
+            <>
+              <Label text={name} color="black" />
+              <Data text={description} color="grey" />
+            </>
 
-          <Status>
-            <Icon src={completed ? completedIcon : lockedIcon} alt="Icon" />
-            <Data
-              text={completed ? 'Completed' : 'Incomplete'}
-              color={completed ? 'green' : 'black'}
-            />
-          </Status>
-        </Item>
-      ))}
+            <Status>
+              <Icon src={completed ? completedIcon : lockedIcon} alt="Icon" />
+              <Data
+                text={completed ? 'Completed' : 'Incomplete'}
+                color={completed ? 'green' : 'black'}
+              />
+            </Status>
+          </Item>
+        );
+      })}
     </Wrapper>
   );
 };

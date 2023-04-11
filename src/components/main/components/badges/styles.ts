@@ -27,7 +27,7 @@ export const Empty = styled.div`
   height: 96px;
   width: 96px;
   border-radius: 50%;
-  background-color: var(--grey);
+  background-color: var(--badge-background);
 `;
 
 export const Status = styled.div`

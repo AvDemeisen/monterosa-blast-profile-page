@@ -2,6 +2,7 @@
 
   --black: black;
   --grey: #808080;
+  --light-grey: #D9D9D9;
   --white: #ffffff;
   --red: #E83E7E;
   --green: #11C094;
@@ -33,6 +34,8 @@
   --dropdown-background: var(--white);
   --dropdown-text: var(--black);
   --dropdown-border: var(--grey);
+
+  --badge-background: var(--light-grey);
 
 
   font-family: 'Mulish', sans-serif;
