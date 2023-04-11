@@ -30,7 +30,7 @@ const Dropdown = ({ setMethod, data }: dropDownProps) => {
       </DropdownHeader>
       {isOpen && (
         <DropdownList>
-          {data.map(({ name }: any, index: Key | null | undefined) => (
+          {data.slice(0, 3).map(({ name }: any, index: Key | null | undefined) => (
             <DropdownItem key={index} onClick={() => handleOptionClick(name)}>
               {name}
             </DropdownItem>
