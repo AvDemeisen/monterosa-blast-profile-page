@@ -30,6 +30,11 @@
   --button-background: var(--red);
   --button-text: var(--white);
 
+  --dropdown-background: var(--white);
+  --dropdown-text: var(--black);
+  --dropdown-border: var(--grey);
+
+
   font-family: 'Mulish', sans-serif;
   line-height: 1.5;
   font-weight: 400;

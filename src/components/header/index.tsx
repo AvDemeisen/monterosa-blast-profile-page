@@ -9,6 +9,7 @@ import HeaderList from './components/header-list';
 import HeaderCard from './components/header-card';
 import Carousel from './components/carousel';
 import Avatar from './components/avatar';
+import DropDown from './components/dropdown';
 
 interface HeaderProps {
   url: string;
@@ -58,7 +59,7 @@ const Header = ({ url, projectId, data, badges, ranking }: HeaderProps) => {
         )}
 
         {edit ? (
-          <Carousel badges={modifiedBadges} setMethod={setAvatar} />
+          <Carousel badges={carouselList} setMethod={setAvatar} />
         ) : (
           <Avatar src={avatar} alt={name} />
         )}
@@ -71,7 +72,11 @@ const Header = ({ url, projectId, data, badges, ranking }: HeaderProps) => {
               setName(e.target.value);
             }}
           />
-          <Description>{description}</Description>
+          {edit ? (
+            <DropDown setMethod={setDescription} />
+          ) : (
+            <Description>{description}</Description>
+          )}
         </UserDetails>
         <HeaderList rank={ranking.rank} score={ranking.score} />
         {edit ? (

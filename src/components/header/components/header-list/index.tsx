@@ -16,7 +16,7 @@ const HeaderList = ({ score, rank }: HeaderListProps) => (
       <ItemLabel>Position</ItemLabel>
     </ListItem>
     <ListItem>
-      <ItemData>###</ItemData>
+      <ItemData>{(rank + 1) * 4}</ItemData>
       <ItemLabel>Streak</ItemLabel>
     </ListItem>
   </Wrapper>
