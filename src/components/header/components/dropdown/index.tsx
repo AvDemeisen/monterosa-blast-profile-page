@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { Key, useState } from 'react';
 import { DropdownContainer, DropdownHeader, DropdownList, DropdownItem, Arrow } from './styles';
 
 const options = ['Option 1', 'Option 2', 'Option 3'];
@@ -32,7 +32,7 @@ const Dropdown = ({ setMethod, data }: dropDownProps) => {
       </DropdownHeader>
       {isOpen && (
         <DropdownList>
-          {data.map(({ name }, index) => (
+          {data.map(({ name }: any, index: Key | null | undefined) => (
             <DropdownItem key={index} onClick={() => handleOptionClick(name)}>
               {name}
             </DropdownItem>
