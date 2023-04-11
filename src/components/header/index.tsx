@@ -81,7 +81,7 @@ const Header = ({ url, projectId, data, badges, ranking }: any) => {
             <Description>{description}</Description>
           )}
         </UserDetails>
-        <HeaderList rank={ranking.rank} score={ranking.score} />
+        <HeaderList rank={ranking.rank} score={ranking.score} streak={ranking.streak} />
         {edit ? (
           <Button onClick={() => setEdit(!edit)}>Save Changes</Button>
         ) : (

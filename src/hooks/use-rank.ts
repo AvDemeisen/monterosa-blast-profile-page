@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 interface Ranking {
   rank: number;
   score: number;
+  streak: number;
 }
 
 interface UseRankResult {
@@ -34,9 +35,11 @@ function useRank(
           }
 
           const data = await response.json();
+          console.log(data);
           setRanking({
             rank: data.data.rank || 0,
             score: data.data.score || 0,
+            streak: data.data.streak || 0,
           });
         } catch (error) {
           setError(error as any);

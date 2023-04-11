@@ -3,9 +3,10 @@ import { Wrapper, ListItem, ItemData, ItemLabel } from './styles';
 interface HeaderListProps {
   rank: number;
   score: number;
+  streak: number;
 }
 
-const HeaderList = ({ score, rank }: HeaderListProps) => (
+const HeaderList = ({ score, rank, streak }: HeaderListProps) => (
   <Wrapper>
     <ListItem>
       <ItemData>{score}</ItemData>
@@ -16,7 +17,7 @@ const HeaderList = ({ score, rank }: HeaderListProps) => (
       <ItemLabel>Position</ItemLabel>
     </ListItem>
     <ListItem>
-      <ItemData>{(rank + 1) * 4}</ItemData>
+      <ItemData>{streak}</ItemData>
       <ItemLabel>Streak</ItemLabel>
     </ListItem>
   </Wrapper>
