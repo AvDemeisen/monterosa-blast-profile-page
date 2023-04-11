@@ -18,7 +18,7 @@ interface HeaderProps {
   projectId: any;
   badges: any;
 }
-const Header = ({ url, projectId, data, badges, ranking }: HeaderProps) => {
+const Header = ({ url, projectId, data, badges, ranking }: any) => {
   const [edit, setEdit] = useState(false);
   const [formEdited, setFormEdited] = useState(false);
   const [name, setName] = useState(data.username);
@@ -40,27 +40,30 @@ const Header = ({ url, projectId, data, badges, ranking }: HeaderProps) => {
   modifiedBadges.push(newBadge);
 
   useEffect(() => {
-    const modifiedBadges = badges.map((badge: any, index: number) => ({
-      ...badge,
-      image: badge.badgeId === 0 ? badge.image : imageMap[index + 1],
-    }));
-    const newBadge = { badgeId: 0, description, name, image: avatar };
-    modifiedBadges.push(newBadge);
-    setCarouselList(modifiedBadges);
-  }, [badges]);
+    if (badges) {
+      const modifiedBadges = badges.slice(0, 3).map((badge: any, index: number) => ({
+        ...badge,
+        image: imageMap[index + 1],
+      }));
 
+      const newBadge = { badgeId: 0, description, name, image: avatar };
+      // modifiedBadges.push(newBadge);
+      setCarouselList(modifiedBadges);
+    }
+  }, [badges]);
+  console.log(carouselList);
   return (
     <Wrapper style={{ backgroundImage: `url(${profileHeader})` }}>
       <Inner>
         {edit ? null : (
-          <EditButton disabled onClick={() => setEdit(!edit)}>
+          <EditButton onClick={() => setEdit(!edit)}>
             <img src={editIcon} alt="Icon" />
           </EditButton>
         )}
-
-        {edit ? (
+        {edit && carouselList ? (
           <Carousel badges={carouselList} setMethod={setAvatar} />
         ) : (
+          // <Carousel badges={carouselList} setMethod={setAvatar} />
           <Avatar src={avatar} alt={name} />
         )}
         <UserDetails>
