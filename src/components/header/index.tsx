@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import editIcon from '@/assets/edit-icon.png';
-import tickIcon from '@/assets/tick-icon.png';
 import one from '@/assets/badges/1.png';
 import two from '@/assets/badges/2.png';
 import three from '@/assets/badges/3.png';
@@ -64,7 +63,14 @@ const Header = ({ url, projectId, data, badges, ranking }: HeaderProps) => {
           <Avatar src={avatar} alt={name} />
         )}
         <UserDetails>
-          <Name>{name}</Name>
+          <Name
+            value={name}
+            edit={edit}
+            disabled={!edit}
+            onChange={(e) => {
+              setName(e.target.value);
+            }}
+          />
           <Description>{description}</Description>
         </UserDetails>
         <HeaderList rank={ranking.rank} score={ranking.score} />

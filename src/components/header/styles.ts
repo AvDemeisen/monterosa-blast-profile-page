@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Wrapper = styled.header`
   position: relative;
@@ -54,7 +54,11 @@ export const EditButton = styled.button`
   }
 `;
 
-export const Name = styled.span`
+interface InputProps {
+  edit: boolean;
+}
+
+export const Name = styled.input<InputProps>`
   font-style: normal;
   font-weight: 800;
   font-size: 28px;
@@ -64,6 +68,14 @@ export const Name = styled.span`
   border: none;
   background-color: transparent;
   cursor: default;
+  padding: 8px;
+  margin-top: 8px;
+
+  ${({ edit }) =>
+    edit &&
+    css`
+      border: 1px solid var(--grey);
+    `};
 `;
 export const Description = styled.span`
   font-style: normal;
