@@ -16,6 +16,8 @@ const Dropdown = ({ setMethod, data }: dropDownProps) => {
     setIsOpen(!isOpen);
   };
 
+  console.log(data);
+
   const handleOptionClick = (option: any) => {
     setSelectedOption(option);
     setMethod(option);
@@ -30,9 +32,9 @@ const Dropdown = ({ setMethod, data }: dropDownProps) => {
       </DropdownHeader>
       {isOpen && (
         <DropdownList>
-          {options.map((option) => (
-            <DropdownItem key={option} onClick={() => handleOptionClick(option)}>
-              {option}
+          {data.map(({ name }, index) => (
+            <DropdownItem key={index} onClick={() => handleOptionClick(name)}>
+              {name}
             </DropdownItem>
           ))}
         </DropdownList>

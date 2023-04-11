@@ -36,7 +36,7 @@ export const DropdownList = styled.ul`
   border-top: none;
   color: var(--dropdown-text);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  z-index: 2;
+  z-index: 3;
 `;
 
 export const DropdownItem = styled.li`
