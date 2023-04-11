@@ -70,6 +70,7 @@ export const Name = styled.input<InputProps>`
   cursor: default;
   padding: 8px;
   margin-top: 8px;
+  width: 100%;
 
   ${({ edit }) =>
     edit &&
