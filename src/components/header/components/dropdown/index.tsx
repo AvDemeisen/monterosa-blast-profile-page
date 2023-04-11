@@ -16,8 +16,6 @@ const Dropdown = ({ setMethod, data }: dropDownProps) => {
     setIsOpen(!isOpen);
   };
 
-  console.log(data);
-
   const handleOptionClick = (option: any) => {
     setSelectedOption(option);
     setMethod(option);

@@ -51,7 +51,7 @@ const Header = ({ url, projectId, data, badges, ranking }: any) => {
       setCarouselList(modifiedBadges);
     }
   }, [badges]);
-  console.log(carouselList);
+
   return (
     <Wrapper style={{ backgroundImage: `url(${profileHeader})` }}>
       <Inner>
