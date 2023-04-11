@@ -20,7 +20,7 @@ import { updatePoints } from './helpers/updatePoints';
 import { updateBadges } from './helpers/updateBadges';
 
 function App() {
-  const refreshInterval = 60000;
+  const refreshInterval = 6000;
   const checkUrl = `${baseUrl}user/check?projectId=${projectId}&strategy=${strategy}&deviceId=${deviceId}&provider=${provider}`;
   const profileUrl = `${baseUrl}user/game-profile?projectId=${projectId}&strategy=${strategy}`;
   const gamificationUrl = (id: string) =>
@@ -46,20 +46,20 @@ function App() {
       updateScore(gamificationBaseUrl, projectId, userId, 10);
     } else if (event.key === '-') {
       updateScore(gamificationBaseUrl, projectId, userId, -10);
-    } else if (event.keyCode === 49) {
+    } else if (event.key === '1') {
       updatePoints(baseUrl, accessToken, projectId, strategy, 10, 'add');
     } else if (event.key === '9' || event.code === 'Digit9') {
       updateBadges(projectId, strategy, profileUrl, accessToken);
     }
   };
 
-  // useEffect(() => {
-  //   document.addEventListener('keydown', handleKeyDown);
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyDown);
 
-  //   return () => {
-  //     document.removeEventListener('keydown', handleKeyDown);
-  //   };
-  // }, [userId]);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [userId]);
 
   return (
     <Wrapper>
