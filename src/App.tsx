@@ -65,7 +65,7 @@ function App() {
       return () => clearInterval(intervalId);
     }
   }, [accessToken]);
-  console.log(badges);
+
   useEffect(() => {
     if (accessToken) {
       fetch(gamificationUrl)
@@ -157,6 +157,44 @@ function App() {
       // .then((rs) => console.log(rs))
       .catch((error) => console.error(error));
   };
+
+  const updateBadges = () => {
+    const body = JSON.stringify({
+      projectId,
+      strategy,
+      data: {
+        type: 'badges',
+        operation: 'add',
+        value: 1,
+      },
+    });
+
+    fetch(profileUrl, {
+      method: 'PUT',
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        'Content-Type': 'application/json',
+      },
+      body,
+    })
+      .then((response) => response.json())
+      .then((rs) => console.log(rs))
+      .catch((error) => console.error(error));
+  };
+
+  useEffect(() => {
+    const handleKeyDown = (event: any) => {
+      if (event.key === '9' || event.code === 'Digit9') {
+        updateBadges();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [badges]);
 
   useEffect(() => {
     const handleKeyDown = (event: { keyCode: number }) => {

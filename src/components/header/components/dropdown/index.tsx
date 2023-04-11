@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { DropdownContainer, DropdownHeader, DropdownList, DropdownItem } from './styles';
+import { DropdownContainer, DropdownHeader, DropdownList, DropdownItem, Arrow } from './styles';
 
 const options = ['Option 1', 'Option 2', 'Option 3'];
 
@@ -25,6 +25,7 @@ const Dropdown = ({ setMethod }: dropDownProps) => {
     <DropdownContainer>
       <DropdownHeader onClick={handleDropdownClick}>
         {selectedOption || 'Select an option'}
+        <Arrow />
       </DropdownHeader>
       {isOpen && (
         <DropdownList>
