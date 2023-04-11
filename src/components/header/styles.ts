@@ -76,6 +76,7 @@ export const Name = styled.input<InputProps>`
     edit &&
     css`
       border: 1px solid var(--grey);
+      cursor: text;
     `};
 `;
 export const Description = styled.span`
