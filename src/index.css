@@ -22,10 +22,13 @@
   --tab-indicator: var(--red);
 
   --card-text: var(--white);
---pale-white: rgba(255, 255, 255, 0.54);
+  --pale-white: rgba(255, 255, 255, 0.54);
   --complete: var(--green);
   --incomplete: var(--red);
   --header-card-background: #1F5DFF;
+
+  --button-background: var(--red);
+  --button-text: var(--white);
 
   font-family: 'Mulish', sans-serif;
   line-height: 1.5;

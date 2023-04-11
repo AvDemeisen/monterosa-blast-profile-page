@@ -77,3 +77,16 @@ export const Description = styled.span`
   background-color: transparent;
   cursor: default;
 `;
+
+export const Button = styled.button`
+  padding: 16px;
+  width: 100%;
+  height: 48px;
+  background: var(--button-background);
+  color: var(--button-text);
+  border: none;
+  border-radius: 4px;
+  font-weight: 800;
+  font-size: 14px;
+  line-height: 16px;
+`;
