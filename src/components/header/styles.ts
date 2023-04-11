@@ -7,13 +7,14 @@ export const Wrapper = styled.header`
   background-size: cover;
   background-color: var(--header-background);
   width: 100%;
+  min-width: 250px;
   margin: 0 auto;
 `;
 
 export const Inner = styled.div`
   background-color: var(--header-inner-background);
   padding: 16px;
-
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -90,6 +91,11 @@ export const Description = styled.span`
   border: none;
   background-color: transparent;
   cursor: default;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
 `;
 
 export const Button = styled.button`

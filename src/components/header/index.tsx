@@ -47,7 +47,7 @@ const Header = ({ url, projectId, data, badges, ranking }: any) => {
       }));
 
       const newBadge = { badgeId: 0, description, name, image: avatar };
-      // modifiedBadges.push(newBadge);
+      modifiedBadges.push(newBadge);
       setCarouselList(modifiedBadges);
     }
   }, [badges]);
@@ -63,7 +63,6 @@ const Header = ({ url, projectId, data, badges, ranking }: any) => {
         {edit && carouselList ? (
           <Carousel badges={carouselList} setMethod={setAvatar} />
         ) : (
-          // <Carousel badges={carouselList} setMethod={setAvatar} />
           <Avatar src={avatar} alt={name} />
         )}
         <UserDetails>

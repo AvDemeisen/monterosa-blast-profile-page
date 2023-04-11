@@ -20,7 +20,7 @@ import { updatePoints } from './helpers/updatePoints';
 import { updateBadges } from './helpers/updateBadges';
 
 function App() {
-  const refreshInterval = 6000;
+  const refreshInterval = 60000;
   const checkUrl = `${baseUrl}user/check?projectId=${projectId}&strategy=${strategy}&deviceId=${deviceId}&provider=${provider}`;
   const profileUrl = `${baseUrl}user/game-profile?projectId=${projectId}&strategy=${strategy}`;
   const gamificationUrl = (id: string) =>
