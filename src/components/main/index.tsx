@@ -5,8 +5,8 @@ import Rewards from './components/rewards';
 
 import 'react-tabs/style/react-tabs.css';
 import { Wrapper, Panel, Tab, Tabs, TabList, TabPanel, Indicator } from './styles';
-function MyTabs({ data }: any) {
-  const { achievements, badges, points } = data;
+function MyTabs({ data, badges }: any) {
+  const { achievements, points } = data;
   const [activeTab, setActiveTab] = useState(0);
   const left = activeTab * 33;
 

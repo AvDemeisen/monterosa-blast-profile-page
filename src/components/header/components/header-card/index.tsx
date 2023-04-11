@@ -12,8 +12,7 @@ const HeaderCard = ({ rank }: HeaderCardProps) => (
   <Wrapper style={{ backgroundImage: `url(${levelBg})` }}>
     <VerticalList>
       <DataContainer>
-        <Data text={`${rank * 10} /`} color="pale" />
-        <Data text={'/ 10,000xp'} color="white" />
+        <Data text={`${rank * 10} /`} color="pale" /> <Data text={'10,000xp'} color="white" />
       </DataContainer>
 
       <span>Level {rank / 10} </span>

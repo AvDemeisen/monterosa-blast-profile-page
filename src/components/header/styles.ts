@@ -54,18 +54,6 @@ export const EditButton = styled.button`
   }
 `;
 
-export const Avatar = styled.img`
-  width: 96px;
-  height: 96px;
-  background: var(--header-text);
-  border-radius: 96px;
-  margin: 0 auto;
-`;
-
-interface InputProps {
-  edit: boolean;
-}
-
 export const Name = styled.span`
   font-style: normal;
   font-weight: 800;

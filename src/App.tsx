@@ -15,6 +15,7 @@ import {
 function App() {
   const [accessToken, setAccessToken] = useState(null);
   const [profileData, setProfileData] = useState(null);
+  const [badges, setBadges] = useState(null);
   const [ranking, setRanking] = useState({ rank: 0, score: 0 });
   const [gameData, setGameData] = useState<any>(null);
   const [userId, setUserId] = useState(null);
@@ -52,6 +53,7 @@ function App() {
           .then((data) => {
             setProfileData(data.data.profile);
             setGameData(data.data.gamify.data);
+            setBadges(data.data.gamify.data.badges);
           })
           .catch((error) => {
             console.error(error);
@@ -63,7 +65,7 @@ function App() {
       return () => clearInterval(intervalId);
     }
   }, [accessToken]);
-
+  console.log(badges);
   useEffect(() => {
     if (accessToken) {
       fetch(gamificationUrl)
@@ -134,8 +136,6 @@ function App() {
     };
   }, [userId]);
 
-  // if (gameData?.points) console.log(gameData?.points.map(({ score }) => score));
-
   const updatePoints = (points: number, operation: string) => {
     fetch(`${baseUrl}user/game-profile`, {
       method: 'PUT',
@@ -178,8 +178,14 @@ function App() {
       <>
         {profileData ? (
           <>
-            <Header url={baseUrl} projectId={projectId} data={profileData} ranking={ranking} />
-            <Main data={gameData} />
+            <Header
+              url={baseUrl}
+              projectId={projectId}
+              data={profileData}
+              badges={badges}
+              ranking={ranking}
+            />
+            <Main data={gameData} badges={badges} />
           </>
         ) : (
           <Loader>LOADING</Loader>

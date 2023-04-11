@@ -13,27 +13,40 @@ interface ListProps {
   }[];
 }
 
-const Badges = ({ data }: ListProps) => (
-  <Wrapper>
-    {data.map(({ badgeId, description, name, image }, i) => (
-      <Item key={badgeId}>
-        {i % 2 == 0 ? <Image src="https://placehold.co/96" /> : <Empty />}
+import one from '@/assets/badges/1.png';
+import two from '@/assets/badges/2.png';
+import three from '@/assets/badges/3.png';
 
-        <>
-          <Label text={name} color="black" />
-          <Data text={description} color="grey" />
-        </>
+const imageMap = {
+  1: one,
+  2: two,
+  3: three,
+} as any;
 
-        <Status>
-          <Icon src={i % 2 == 0 ? completedIcon : lockedIcon} alt="Icon" />
-          <Data
-            text={i % 2 == 0 ? 'Completed' : 'Incomplete'}
-            color={i % 2 == 0 ? 'green' : 'black'}
-          />
-        </Status>
-      </Item>
-    ))}
-  </Wrapper>
-);
+const Badges = ({ data }: ListProps) => {
+  const completed = true;
+  return (
+    <Wrapper>
+      {data.map(({ badgeId, description, name, image }, i) => (
+        <Item key={badgeId}>
+          {completed ? <Image src={imageMap[i + 1]} /> : <Empty />}
+
+          <>
+            <Label text={name} color="black" />
+            <Data text={description} color="grey" />
+          </>
+
+          <Status>
+            <Icon src={completed ? completedIcon : lockedIcon} alt="Icon" />
+            <Data
+              text={completed ? 'Completed' : 'Incomplete'}
+              color={completed ? 'green' : 'black'}
+            />
+          </Status>
+        </Item>
+      ))}
+    </Wrapper>
+  );
+};
 
 export default Badges;
