@@ -5,9 +5,10 @@ const options = ['Option 1', 'Option 2', 'Option 3'];
 
 interface dropDownProps {
   setMethod: any;
+  data: any;
 }
 
-const Dropdown = ({ setMethod }: dropDownProps) => {
+const Dropdown = ({ setMethod, data }: dropDownProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState('');
 

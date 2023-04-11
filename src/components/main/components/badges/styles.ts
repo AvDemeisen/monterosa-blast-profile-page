@@ -13,7 +13,7 @@ export const Item = styled.li`
   gap: 8px;
   align-items: center;
   border-radius: 8px;
-  border: 1px solid var(--grey);
+  border: 1px solid var(--light-grey);
   padding: 8px;
 `;
 

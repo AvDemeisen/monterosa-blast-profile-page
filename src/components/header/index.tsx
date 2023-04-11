@@ -53,7 +53,7 @@ const Header = ({ url, projectId, data, badges, ranking }: HeaderProps) => {
     <Wrapper style={{ backgroundImage: `url(${profileHeader})` }}>
       <Inner>
         {edit ? null : (
-          <EditButton onClick={() => setEdit(!edit)}>
+          <EditButton disabled onClick={() => setEdit(!edit)}>
             <img src={editIcon} alt="Icon" />
           </EditButton>
         )}
@@ -73,7 +73,7 @@ const Header = ({ url, projectId, data, badges, ranking }: HeaderProps) => {
             }}
           />
           {edit ? (
-            <DropDown setMethod={setDescription} />
+            <DropDown setMethod={setDescription} data={badges} />
           ) : (
             <Description>{description}</Description>
           )}
